@@ -96,5 +96,24 @@ namespace Quiz.DAL
             }
             return check;
         }
+
+        public bool Teacher_LoginValid(String u, String p) {
+            bool check = false;
+            try
+            {
+                using (SqlCommand dbCmd = new SqlCommand("sp_Teacher_LoginValid", openConnection()))
+                {
+                    dbCmd.CommandType = CommandType.StoredProcedure;
+                    dbCmd.Parameters.Add(new SqlParameter("@username", u));
+                    dbCmd.Parameters.Add(new SqlParameter("@password", p));
+                    int r = (int)dbCmd.ExecuteScalar();
+                    if (r > 0) check = true;
+                }
+            }
+            catch
+            {
+            }
+            return check;
+        }
     }
 }

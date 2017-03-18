@@ -12,6 +12,15 @@ namespace Quiz.Entity
         private string id;
         private string className;
         private string facultyID;
+        private string facultyName;
+
+        public Class() { }
+
+        public Class(String id, string className, string facultyID) {
+            this.id = id;
+            this.className = className;
+            this.facultyID = facultyID;
+        }
 
         public string Id
         {
@@ -51,11 +60,26 @@ namespace Quiz.Entity
                 facultyID = value;
             }
         }
+
+        public string FacultyName
+        {
+            get
+            {
+                return facultyName;
+            }
+
+            set
+            {
+                facultyName = value;
+            }
+        }
+
         public void ClassIDataReader(SqlDataReader dr)
         {
             Id = dr["id"] is DBNull ? string.Empty : dr["id"].ToString();
             ClassName = dr["className"] is DBNull ? string.Empty : dr["className"].ToString();
             FacultyID = dr["facultyID"] is DBNull ? string.Empty : dr["facultyID"].ToString();
+            FacultyName = dr["facultyName"] is DBNull ? string.Empty : dr["facultyName"].ToString();
         }
     }
 }

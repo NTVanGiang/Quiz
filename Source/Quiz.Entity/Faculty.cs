@@ -12,6 +12,14 @@ namespace Quiz.Entity
         private string id;
         private string facultyName;
 
+        public Faculty(String id, String name) {
+            this.id = id;
+            this.facultyName = name;
+        }
+        public Faculty()
+        {
+        }
+
         public string Id
         {
             get

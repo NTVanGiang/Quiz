@@ -29,5 +29,8 @@ namespace Quiz.BUS
         {
             return obj.Teacher_Delete(ID);
         }
+        public bool Teacher_LoginValid(String u, String p) {
+            return obj.Teacher_LoginValid(u, p);
+        }
     }
 }

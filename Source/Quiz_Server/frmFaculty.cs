@@ -13,20 +13,18 @@ namespace Quiz_Server
 {
     public partial class frmFaculty : Form
     {
+        private FacultyBUS obj = new FacultyBUS();
         public frmFaculty()
         {
             InitializeComponent();
+        }
+
+        private void frmFaculty_Load(object sender, EventArgs e)
+        {
             BinData("", "", "");
         }
         private void BinData(String t, String w, String o)
         {
-            FacultyBUS obj = new FacultyBUS();
-            dgvFaculty.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvFaculty.AllowUserToAddRows = false;
-            dgvFaculty.AllowUserToDeleteRows = false;
-            dgvFaculty.MultiSelect = false;
-            dgvFaculty.BackgroundColor = Color.White;
-            dgvFaculty.ReadOnly = true;
             dgvFaculty.DataSource = obj.Faculty_GetByTop(t, w, o);
             dgvFaculty.Columns[0].HeaderText = "Faculty ID";
             dgvFaculty.Columns[1].HeaderText = "Faculty Name";
@@ -69,7 +67,6 @@ namespace Quiz_Server
                 MessageBox.Show("Please fill out textbox Faculty Name!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            FacultyBUS obj = new FacultyBUS();
             Faculty faculty = new Faculty(txtFacultyID.Text, txtFacultyName.Text);
             if (txtFacultyID.Text.Equals(""))
             {
@@ -97,6 +94,7 @@ namespace Quiz_Server
                 }
             }
             BinData("", "", "");
+            Clear();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -105,7 +103,7 @@ namespace Quiz_Server
             {
                 if (MessageBox.Show("Delete this faculty ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (new FacultyBUS().Faculty_Delete(dgvFaculty.CurrentRow.Cells[0].Value.ToString()))
+                    if (obj.Faculty_Delete(dgvFaculty.CurrentRow.Cells[0].Value.ToString()))
                     {
                         MessageBox.Show("Delete faculty successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         BinData("", "", "");
@@ -142,5 +140,7 @@ namespace Quiz_Server
             Clear();
             BinData("", "", "");
         }
+
+        
     }
 }

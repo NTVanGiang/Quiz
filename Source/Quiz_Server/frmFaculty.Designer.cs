@@ -111,6 +111,7 @@
             this.dgvFaculty.AllowUserToAddRows = false;
             this.dgvFaculty.AllowUserToDeleteRows = false;
             this.dgvFaculty.AllowUserToOrderColumns = true;
+            this.dgvFaculty.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -220,6 +221,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmFaculty";
             this.Text = "frmFaculty";
+            this.Load += new System.EventHandler(this.frmFaculty_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

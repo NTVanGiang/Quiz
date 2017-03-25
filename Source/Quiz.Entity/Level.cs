@@ -12,6 +12,14 @@ namespace Quiz.Entity
         private string id;
         private string detail;
 
+        public Level(string id, string detail)
+        {
+            this.id = id;
+            this.detail = detail;
+        }
+
+        public Level() { }
+
         public string Id
         {
             get

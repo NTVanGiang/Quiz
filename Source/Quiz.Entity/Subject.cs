@@ -9,8 +9,19 @@ namespace Quiz.Entity
 {
     public class Subject
     {
-        private string id;
-        private string subjectName;
+        private String id;
+        private String subjectName;
+
+        public Subject(string id, string name)
+        {
+            this.Id = id;
+            this.SubjectName = name;
+        }
+
+        public Subject()
+        {
+
+        }
 
         public string Id
         {
@@ -37,6 +48,7 @@ namespace Quiz.Entity
                 subjectName = value;
             }
         }
+
         public void SubjectIDataReader(SqlDataReader dr)
         {
             Id = dr["id"] is DBNull ? string.Empty : dr["id"].ToString();

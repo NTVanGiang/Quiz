@@ -43,6 +43,7 @@ namespace Quiz.DAL
                 using (SqlCommand dbCmd = new SqlCommand("sp_Topic_Insert", openConnection()))
                 {
                     dbCmd.CommandType = CommandType.StoredProcedure;
+                    dbCmd.Parameters.Add(new SqlParameter("@subjectID", data.SubjectID));
                     dbCmd.Parameters.Add(new SqlParameter("@topicName", data.TopicName));
                     int r = dbCmd.ExecuteNonQuery();
                     if (r > 0) check = true;
@@ -63,6 +64,7 @@ namespace Quiz.DAL
                 {
                     dbCmd.CommandType = CommandType.StoredProcedure;
                     dbCmd.Parameters.Add(new SqlParameter("@id", data.Id));
+                    dbCmd.Parameters.Add(new SqlParameter("@subjectID", data.SubjectID));
                     dbCmd.Parameters.Add(new SqlParameter("@topicName", data.TopicName));
                     int r = dbCmd.ExecuteNonQuery();
                     if (r > 0) check = true;

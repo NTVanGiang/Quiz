@@ -11,13 +11,13 @@ namespace Quiz.Entity
     {
         private string id;
         private string facultyName;
-
-        public Faculty(String id, String name) {
-            this.id = id;
-            this.facultyName = name;
-        }
         public Faculty()
         {
+            
+        }
+        public Faculty(string id, string facultyName) {
+            this.id = id;
+            this.facultyName = facultyName;
         }
 
         public string Id
@@ -45,6 +45,7 @@ namespace Quiz.Entity
                 facultyName = value;
             }
         }
+
         public void FacultyIDataReader(SqlDataReader dr)
         {
             Id = dr["id"] is DBNull ? string.Empty : dr["id"].ToString();

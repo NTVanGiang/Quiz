@@ -91,6 +91,7 @@ namespace Quiz.DAL
             }
             catch
             {
+                
             }
             return check;
         }

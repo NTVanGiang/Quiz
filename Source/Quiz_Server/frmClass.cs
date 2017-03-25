@@ -14,16 +14,23 @@ namespace Quiz_Server
 {
     public partial class frmClass : Form
     {
+        private ClassBUS obj = new ClassBUS();
         public frmClass()
         {
             InitializeComponent();
+        }
+
+
+
+        private void frmClass_Load(object sender, EventArgs e)
+        {
+
             BinData("", "", "");
-            BinCmbFaculty("","","");
+            BinCmbFaculty("", "", "");
         }
 
         private void BinData(String t, String w, String o)
         {
-            ClassBUS obj = new ClassBUS();
             dgvClass.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClass.AllowUserToAddRows = false;
             dgvClass.AllowUserToDeleteRows = false;
@@ -70,6 +77,7 @@ namespace Quiz_Server
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Clear();
+            txtClassName.Select();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -93,7 +101,7 @@ namespace Quiz_Server
             {
                 if (MessageBox.Show("Delete this class ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (new ClassBUS().Class_Delete(dgvClass.CurrentRow.Cells[0].Value.ToString()))
+                    if (obj.Class_Delete(dgvClass.CurrentRow.Cells[0].Value.ToString()))
                     {
                         MessageBox.Show("Delete class successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         BinData("", "", "");
@@ -140,7 +148,6 @@ namespace Quiz_Server
                 MessageBox.Show("Please fill out all textbox!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            ClassBUS obj = new ClassBUS();
             Class Class = new Class(txtClassID.Text,txtClassName.Text,cmbFacultyID.SelectedValue.ToString());
             if (txtClassID.Text.Equals(""))
             {
@@ -168,6 +175,7 @@ namespace Quiz_Server
                 }
             }
             BinData("", "", "");
+            Clear();
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Quiz.Entity
 {
@@ -11,14 +7,26 @@ namespace Quiz.Entity
     {
         private string id;
         private string subjectID;
-        private string parent;
         private string topicID;
         private string levelID;
         private string content;
         private string reuse;
-        private string reportCount;
         private string createDate;
-        private string active;
+
+        public Question(string id, string subjectId, string topicId, string levelId, string content, string reuse, string createDate)
+        {
+            this.id = id;
+            subjectID = subjectId;
+            topicID = topicId;
+            levelID = levelId;
+            this.content = content;
+            this.reuse = reuse;
+            this.createDate = createDate;
+        }
+
+        public Question()
+        {
+        }
 
         public string Id
         {
@@ -43,19 +51,6 @@ namespace Quiz.Entity
             set
             {
                 subjectID = value;
-            }
-        }
-
-        public string Parent
-        {
-            get
-            {
-                return parent;
-            }
-
-            set
-            {
-                parent = value;
             }
         }
 
@@ -111,19 +106,6 @@ namespace Quiz.Entity
             }
         }
 
-        public string ReportCount
-        {
-            get
-            {
-                return reportCount;
-            }
-
-            set
-            {
-                reportCount = value;
-            }
-        }
-
         public string CreateDate
         {
             get
@@ -136,30 +118,14 @@ namespace Quiz.Entity
                 createDate = value;
             }
         }
-
-        public string Active
-        {
-            get
-            {
-                return active;
-            }
-
-            set
-            {
-                active = value;
-            }
-        }
         public void QuestionIDataReader(SqlDataReader dr)
         {
             Id = dr["id"] is DBNull ? string.Empty : dr["id"].ToString();
             SubjectID = dr["subjectID"] is DBNull ? string.Empty : dr["subjectID"].ToString();
-            Parent = dr["parent"] is DBNull ? string.Empty : dr["parent"].ToString();
             TopicID = dr["topicID"] is DBNull ? "" : dr["topicID"].ToString(); 
             LevelID = dr["levelID"] is DBNull ? string.Empty : dr["levelID"].ToString();
             Content = dr["content"] is DBNull ? string.Empty : dr["content"].ToString();
-            ReportCount = dr["reportCount"] is DBNull ? "" : dr["reportCount"].ToString();
             CreateDate = dr["createDate"] is DBNull ? "" : dr["createDate"].ToString();
-            Active = dr["active"] is DBNull ? "" : dr["active"].ToString();
         }
     }
 }

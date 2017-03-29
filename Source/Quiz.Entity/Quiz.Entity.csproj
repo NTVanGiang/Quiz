@@ -51,6 +51,7 @@
     <Compile Include="Result.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Subject.cs" />
+    <Compile Include="SubQuestion.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="Topic.cs" />
   </ItemGroup>

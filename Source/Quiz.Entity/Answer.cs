@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Quiz.Entity
 {
@@ -13,6 +9,18 @@ namespace Quiz.Entity
         private string quesionID;
         private string answer;
         private string isCorrect;
+
+        public Answer(string id, string quesionId, string answer, string isCorrect)
+        {
+            this.id = id;
+            quesionID = quesionId;
+            this.answer = answer;
+            this.isCorrect = isCorrect;
+        }
+
+        public Answer()
+        {
+        }
 
         public string Id
         {

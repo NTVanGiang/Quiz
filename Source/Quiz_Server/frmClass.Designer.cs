@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClass));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvClass = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -37,28 +40,63 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.cmbFacultyID = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtClassName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtClassID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.ptminimize = new System.Windows.Forms.PictureBox();
+            this.ptexit = new System.Windows.Forms.PictureBox();
+            this.panel1.SuspendLayout();
+            this.bunifuGradientPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClass)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ptminimize);
+            this.panel1.Controls.Add(this.ptexit);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(714, 37);
+            this.panel1.TabIndex = 0;
+            // 
+            // bunifuGradientPanel1
+            // 
+            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
+            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.panel2);
+            this.bunifuGradientPanel1.Controls.Add(this.panel3);
+            this.bunifuGradientPanel1.Controls.Add(this.txtSearch);
+            this.bunifuGradientPanel1.Controls.Add(this.label3);
+            this.bunifuGradientPanel1.Controls.Add(this.panel4);
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.DarkGray;
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.White;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.White;
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.White;
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(13, 44);
+            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
+            this.bunifuGradientPanel1.Quality = 10;
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(689, 377);
+            this.bunifuGradientPanel1.TabIndex = 1;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvClass);
-            this.panel2.Location = new System.Drawing.Point(253, 68);
+            this.panel2.Location = new System.Drawing.Point(264, 49);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(402, 256);
-            this.panel2.TabIndex = 1;
+            this.panel2.Size = new System.Drawing.Size(425, 256);
+            this.panel2.TabIndex = 6;
             // 
             // dgvClass
             // 
@@ -66,32 +104,34 @@
             this.dgvClass.AllowUserToDeleteRows = false;
             this.dgvClass.AllowUserToOrderColumns = true;
             this.dgvClass.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClass.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClass.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClass.Location = new System.Drawing.Point(3, 3);
+            this.dgvClass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClass.Location = new System.Drawing.Point(0, 0);
             this.dgvClass.Name = "dgvClass";
             this.dgvClass.ReadOnly = true;
-            this.dgvClass.Size = new System.Drawing.Size(396, 250);
+            this.dgvClass.Size = new System.Drawing.Size(425, 256);
             this.dgvClass.TabIndex = 8;
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.btnExit);
             this.panel3.Controls.Add(this.btnSave);
             this.panel3.Controls.Add(this.btnDelete);
             this.panel3.Controls.Add(this.btnEdit);
             this.panel3.Controls.Add(this.btnAdd);
-            this.panel3.Location = new System.Drawing.Point(12, 330);
+            this.panel3.Location = new System.Drawing.Point(23, 311);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(640, 62);
-            this.panel3.TabIndex = 2;
+            this.panel3.Size = new System.Drawing.Size(663, 62);
+            this.panel3.TabIndex = 7;
             // 
             // btnExit
             // 
@@ -110,7 +150,6 @@
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
@@ -120,7 +159,6 @@
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -130,7 +168,6 @@
             this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -140,40 +177,31 @@
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(253, 22);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(349, 26);
-            this.txtSearch.TabIndex = 3;
-            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
-            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(117, 25);
+            this.label3.Location = new System.Drawing.Point(128, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 20);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 9;
             this.label3.Text = "Search Faculty";
             // 
-            // panel1
+            // panel4
             // 
-            this.panel1.Controls.Add(this.cmbFacultyID);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtClassName);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txtClassID);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 68);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(235, 253);
-            this.panel1.TabIndex = 5;
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Controls.Add(this.cmbFacultyID);
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.txtClassName);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.txtClassID);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Location = new System.Drawing.Point(23, 49);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(235, 253);
+            this.panel4.TabIndex = 10;
             // 
             // cmbFacultyID
             // 
@@ -231,31 +259,67 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Class ID";
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(264, 17);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(349, 26);
+            this.txtSearch.TabIndex = 8;
+            // 
+            // ptminimize
+            // 
+            this.ptminimize.BackColor = System.Drawing.Color.Transparent;
+            this.ptminimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptminimize.Image = ((System.Drawing.Image)(resources.GetObject("ptminimize.Image")));
+            this.ptminimize.Location = new System.Drawing.Point(654, 3);
+            this.ptminimize.Name = "ptminimize";
+            this.ptminimize.Size = new System.Drawing.Size(28, 25);
+            this.ptminimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptminimize.TabIndex = 9;
+            this.ptminimize.TabStop = false;
+            // 
+            // ptexit
+            // 
+            this.ptexit.BackColor = System.Drawing.Color.Transparent;
+            this.ptexit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptexit.Image = ((System.Drawing.Image)(resources.GetObject("ptexit.Image")));
+            this.ptexit.Location = new System.Drawing.Point(683, 3);
+            this.ptexit.Name = "ptexit";
+            this.ptexit.Size = new System.Drawing.Size(27, 25);
+            this.ptexit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptexit.TabIndex = 10;
+            this.ptexit.TabStop = false;
+            // 
             // frmClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 404);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(714, 433);
+            this.Controls.Add(this.bunifuGradientPanel1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmClass";
             this.Text = "frmClass";
             this.Load += new System.EventHandler(this.frmClass_Load);
+            this.panel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClass)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel panel1;
+        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dgvClass;
         private System.Windows.Forms.Panel panel3;
@@ -266,12 +330,14 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox cmbFacultyID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtClassName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtClassID;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbFacultyID;
+        private System.Windows.Forms.PictureBox ptminimize;
+        private System.Windows.Forms.PictureBox ptexit;
     }
 }

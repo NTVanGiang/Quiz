@@ -52,6 +52,7 @@
     <Compile Include="SqlDataProvider.cs" />
     <Compile Include="StudentDAL.cs" />
     <Compile Include="SubjectDAL.cs" />
+    <Compile Include="SubQuestionDAL.cs" />
     <Compile Include="TeacherDAL.cs" />
     <Compile Include="TopicDAL.cs" />
   </ItemGroup>

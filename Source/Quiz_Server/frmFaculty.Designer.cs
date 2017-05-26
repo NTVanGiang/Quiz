@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaculty));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ptminimize = new System.Windows.Forms.PictureBox();
+            this.ptexit = new System.Windows.Forms.PictureBox();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvFaculty = new System.Windows.Forms.DataGridView();
@@ -47,16 +49,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtFacultyID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ptminimize = new System.Windows.Forms.PictureBox();
-            this.ptexit = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFaculty)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,6 +68,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(645, 32);
             this.panel1.TabIndex = 0;
+            // 
+            // ptminimize
+            // 
+            this.ptminimize.BackColor = System.Drawing.Color.Transparent;
+            this.ptminimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptminimize.Image = ((System.Drawing.Image)(resources.GetObject("ptminimize.Image")));
+            this.ptminimize.Location = new System.Drawing.Point(586, 3);
+            this.ptminimize.Name = "ptminimize";
+            this.ptminimize.Size = new System.Drawing.Size(28, 25);
+            this.ptminimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptminimize.TabIndex = 11;
+            this.ptminimize.TabStop = false;
+            // 
+            // ptexit
+            // 
+            this.ptexit.BackColor = System.Drawing.Color.Transparent;
+            this.ptexit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptexit.Image = ((System.Drawing.Image)(resources.GetObject("ptexit.Image")));
+            this.ptexit.Location = new System.Drawing.Point(615, 3);
+            this.ptexit.Name = "ptexit";
+            this.ptexit.Size = new System.Drawing.Size(27, 25);
+            this.ptexit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptexit.TabIndex = 12;
+            this.ptexit.TabStop = false;
             // 
             // bunifuGradientPanel1
             // 
@@ -147,6 +171,7 @@
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
@@ -156,6 +181,7 @@
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -165,6 +191,7 @@
             this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -174,6 +201,7 @@
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtSearch
             // 
@@ -182,6 +210,8 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(386, 26);
             this.txtSearch.TabIndex = 3;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // label3
             // 
@@ -243,30 +273,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Faculty ID";
             // 
-            // ptminimize
-            // 
-            this.ptminimize.BackColor = System.Drawing.Color.Transparent;
-            this.ptminimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptminimize.Image = ((System.Drawing.Image)(resources.GetObject("ptminimize.Image")));
-            this.ptminimize.Location = new System.Drawing.Point(586, 3);
-            this.ptminimize.Name = "ptminimize";
-            this.ptminimize.Size = new System.Drawing.Size(28, 25);
-            this.ptminimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptminimize.TabIndex = 11;
-            this.ptminimize.TabStop = false;
-            // 
-            // ptexit
-            // 
-            this.ptexit.BackColor = System.Drawing.Color.Transparent;
-            this.ptexit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptexit.Image = ((System.Drawing.Image)(resources.GetObject("ptexit.Image")));
-            this.ptexit.Location = new System.Drawing.Point(615, 3);
-            this.ptexit.Name = "ptexit";
-            this.ptexit.Size = new System.Drawing.Size(27, 25);
-            this.ptexit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptexit.TabIndex = 12;
-            this.ptexit.TabStop = false;
-            // 
             // frmFaculty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +285,8 @@
             this.Text = "frmFaculty";
             this.Load += new System.EventHandler(this.frmFaculty_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).EndInit();
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -286,8 +294,6 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).EndInit();
             this.ResumeLayout(false);
 
         }

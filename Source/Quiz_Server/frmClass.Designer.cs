@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClass));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ptminimize = new System.Windows.Forms.PictureBox();
+            this.ptexit = new System.Windows.Forms.PictureBox();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvClass = new System.Windows.Forms.DataGridView();
@@ -40,6 +42,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cmbFacultyID = new System.Windows.Forms.ComboBox();
@@ -48,17 +51,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtClassID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.ptminimize = new System.Windows.Forms.PictureBox();
-            this.ptexit = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClass)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,6 +70,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(714, 37);
             this.panel1.TabIndex = 0;
+            // 
+            // ptminimize
+            // 
+            this.ptminimize.BackColor = System.Drawing.Color.Transparent;
+            this.ptminimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptminimize.Image = ((System.Drawing.Image)(resources.GetObject("ptminimize.Image")));
+            this.ptminimize.Location = new System.Drawing.Point(654, 3);
+            this.ptminimize.Name = "ptminimize";
+            this.ptminimize.Size = new System.Drawing.Size(28, 25);
+            this.ptminimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptminimize.TabIndex = 9;
+            this.ptminimize.TabStop = false;
+            // 
+            // ptexit
+            // 
+            this.ptexit.BackColor = System.Drawing.Color.Transparent;
+            this.ptexit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptexit.Image = ((System.Drawing.Image)(resources.GetObject("ptexit.Image")));
+            this.ptexit.Location = new System.Drawing.Point(683, 3);
+            this.ptexit.Name = "ptexit";
+            this.ptexit.Size = new System.Drawing.Size(27, 25);
+            this.ptexit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptexit.TabIndex = 10;
+            this.ptexit.TabStop = false;
             // 
             // bunifuGradientPanel1
             // 
@@ -104,14 +128,14 @@
             this.dgvClass.AllowUserToDeleteRows = false;
             this.dgvClass.AllowUserToOrderColumns = true;
             this.dgvClass.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClass.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClass.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClass.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClass.Location = new System.Drawing.Point(0, 0);
@@ -150,6 +174,7 @@
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
@@ -159,6 +184,7 @@
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -168,6 +194,7 @@
             this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -177,6 +204,17 @@
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(264, 17);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(349, 26);
+            this.txtSearch.TabIndex = 8;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // label3
             // 
@@ -185,9 +223,10 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(128, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 20);
+            this.label3.Size = new System.Drawing.Size(103, 20);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Search Faculty";
+            this.label3.Text = "Search Class";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel4
             // 
@@ -259,38 +298,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Class ID";
             // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(264, 17);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(349, 26);
-            this.txtSearch.TabIndex = 8;
-            // 
-            // ptminimize
-            // 
-            this.ptminimize.BackColor = System.Drawing.Color.Transparent;
-            this.ptminimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptminimize.Image = ((System.Drawing.Image)(resources.GetObject("ptminimize.Image")));
-            this.ptminimize.Location = new System.Drawing.Point(654, 3);
-            this.ptminimize.Name = "ptminimize";
-            this.ptminimize.Size = new System.Drawing.Size(28, 25);
-            this.ptminimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptminimize.TabIndex = 9;
-            this.ptminimize.TabStop = false;
-            // 
-            // ptexit
-            // 
-            this.ptexit.BackColor = System.Drawing.Color.Transparent;
-            this.ptexit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptexit.Image = ((System.Drawing.Image)(resources.GetObject("ptexit.Image")));
-            this.ptexit.Location = new System.Drawing.Point(683, 3);
-            this.ptexit.Name = "ptexit";
-            this.ptexit.Size = new System.Drawing.Size(27, 25);
-            this.ptexit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptexit.TabIndex = 10;
-            this.ptexit.TabStop = false;
-            // 
             // frmClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,6 +310,8 @@
             this.Text = "frmClass";
             this.Load += new System.EventHandler(this.frmClass_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).EndInit();
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -310,8 +319,6 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).EndInit();
             this.ResumeLayout(false);
 
         }

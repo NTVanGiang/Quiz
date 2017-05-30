@@ -19,8 +19,8 @@ namespace Quiz_Server
         private void BinData(String t, String w, String o)
         {
             dgvFaculty.DataSource = obj.Faculty_GetByTop(t, w, o);
-            dgvFaculty.Columns[0].HeaderText = "Faculty ID";
-            dgvFaculty.Columns[1].HeaderText = "Faculty Name";
+            dgvFaculty.Columns[0].HeaderText = "Mã khoa";
+            dgvFaculty.Columns[1].HeaderText = "Tên khoa";
             dgvFaculty.Columns[1].Width = 180;
         }
 
@@ -119,10 +119,10 @@ namespace Quiz_Server
             if(e.KeyChar == 13) {
                 try {
                     int x = int.Parse(txtSearch.Text);
-                    BinData("", " id = '" + x + "' or facultyName like '%" + x + "%'", "");
+                    BinData("", " id = '" + x + "' or facultyName like N'%" + x + "%'", "");
                 }
                 catch {
-                    BinData("", " facultyName like '%" + txtSearch.Text + "%'", "");
+                    BinData("", " facultyName like N'%" + txtSearch.Text + "%'", "");
                 }
             }
         }

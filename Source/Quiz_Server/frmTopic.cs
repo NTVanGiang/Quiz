@@ -25,11 +25,11 @@ namespace Quiz_Server
             dgvTopic.DataSource = null;
             dgvTopic.DataSource = obj.Topic_GetByTop(t, w, o);
             dgvTopic.Columns[0].DataPropertyName = "id";
-            dgvTopic.Columns[0].HeaderText = "Topic ID";
+            dgvTopic.Columns[0].HeaderText = "Mã chủ đề";
             dgvTopic.Columns[1].DataPropertyName = "topicName";
-            dgvTopic.Columns[1].HeaderText = "Topic Name";
+            dgvTopic.Columns[1].HeaderText = "Tên chủ đề";
             dgvTopic.Columns[2].DataPropertyName = "subjectName";
-            dgvTopic.Columns[2].HeaderText = "Subject Name";
+            dgvTopic.Columns[2].HeaderText = "Tên môn học";
             dgvTopic.Columns[2].Width = 150;
             dgvTopic.Columns[3].DataPropertyName = "subjectID";
             dgvTopic.Columns[3].HeaderText = "Subject ID";
@@ -54,6 +54,79 @@ namespace Quiz_Server
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private bool ValidField()
+        {
+            return (txtTopicName.Text.Equals("") || cmbSubject.SelectedIndex < 0) ? true : false;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            Clear();
+            BinData("", "", "");
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                try
+                {
+                    int x = int.Parse(txtSearch.Text);
+                    BinData("", " id = '" + x + "' or topicName like N'%" + x + "%'", "");
+                }
+                catch
+                {
+                    BinData("", " topicName like N'%" + txtSearch.Text + "%'", "");
+                }
+            }
+        }
+
+        private void ptminimize_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ptexit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvTopic_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
+            Clear();
+            txtTopicName.Select();
+        }
+
+        private void btnEdit_Click_1(object sender, EventArgs e)
+        {
             try
             {
                 int row = dgvTopic.CurrentRow.Index;
@@ -65,10 +138,9 @@ namespace Quiz_Server
             {
                 MessageBox.Show("Select a row first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -92,19 +164,14 @@ namespace Quiz_Server
             }
         }
 
-        private bool ValidField()
-        {
-            return (txtTopicName.Text.Equals("") || cmbSubject.SelectedIndex < 0) ? true : false;
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSave_Click_1(object sender, EventArgs e)
         {
             if (ValidField())
             {
                 MessageBox.Show("Please fill out all textbox!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            Topic topic = new Topic(txtTopicID.Text,txtTopicName.Text,cmbSubject.SelectedValue.ToString());
+            Topic topic = new Topic(txtTopicID.Text, txtTopicName.Text, cmbSubject.SelectedValue.ToString());
             if (txtTopicID.Text.Equals(""))
             {
                 if (obj.Topic_Insert(topic))
@@ -132,34 +199,6 @@ namespace Quiz_Server
             }
             BinData("", "", "");
             Clear();
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            Clear();
-            txtTopicName.Select();
-        }
-
-        private void txtSearch_Leave(object sender, EventArgs e)
-        {
-            Clear();
-            BinData("", "", "");
-        }
-
-        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-            {
-                try
-                {
-                    int x = int.Parse(txtSearch.Text);
-                    BinData("", " id = '" + x + "' or topicName like '%" + x + "%'", "");
-                }
-                catch
-                {
-                    BinData("", " topicName like '%" + txtSearch.Text + "%'", "");
-                }
-            }
         }
     }
 }

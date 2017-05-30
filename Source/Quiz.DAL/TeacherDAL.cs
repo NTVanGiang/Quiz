@@ -43,6 +43,7 @@ namespace Quiz.DAL
                     dbCmd.Parameters.Add(new SqlParameter("@name", data.Name));
                     dbCmd.Parameters.Add(new SqlParameter("@username", data.Username));
                     dbCmd.Parameters.Add(new SqlParameter("@password", data.Password));
+                    dbCmd.Parameters.Add(new SqlParameter("@avatar", data.Avatar));
                     int r = dbCmd.ExecuteNonQuery();
                     if (r > 0) check = true;
                 }
@@ -65,6 +66,7 @@ namespace Quiz.DAL
                     dbCmd.Parameters.Add(new SqlParameter("@name", data.Name));
                     dbCmd.Parameters.Add(new SqlParameter("@username", data.Username));
                     dbCmd.Parameters.Add(new SqlParameter("@password", data.Password));
+                    dbCmd.Parameters.Add(new SqlParameter("@avatar", data.Avatar));
                     int r = dbCmd.ExecuteNonQuery();
                     if (r > 0) check = true;
                 }

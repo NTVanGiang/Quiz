@@ -39,8 +39,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.roundFrmLogin = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.ptminimize = new System.Windows.Forms.PictureBox();
-            this.ptexit = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -48,8 +46,6 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.dragLoginForm = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -111,7 +107,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label4.Location = new System.Drawing.Point(107, 36);
+            this.label4.Location = new System.Drawing.Point(148, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(344, 31);
             this.label4.TabIndex = 3;
@@ -141,32 +137,6 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 7;
             this.pictureBox4.TabStop = false;
-            // 
-            // ptminimize
-            // 
-            this.ptminimize.BackColor = System.Drawing.Color.Transparent;
-            this.ptminimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptminimize.Image = ((System.Drawing.Image)(resources.GetObject("ptminimize.Image")));
-            this.ptminimize.Location = new System.Drawing.Point(488, 7);
-            this.ptminimize.Name = "ptminimize";
-            this.ptminimize.Size = new System.Drawing.Size(28, 25);
-            this.ptminimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptminimize.TabIndex = 6;
-            this.ptminimize.TabStop = false;
-            this.ptminimize.Click += new System.EventHandler(this.ptminimize_Click);
-            // 
-            // ptexit
-            // 
-            this.ptexit.BackColor = System.Drawing.Color.Transparent;
-            this.ptexit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptexit.Image = ((System.Drawing.Image)(resources.GetObject("ptexit.Image")));
-            this.ptexit.Location = new System.Drawing.Point(517, 7);
-            this.ptexit.Name = "ptexit";
-            this.ptexit.Size = new System.Drawing.Size(27, 25);
-            this.ptexit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptexit.TabIndex = 6;
-            this.ptexit.TabStop = false;
-            this.ptexit.Click += new System.EventHandler(this.ptexit_Click);
             // 
             // pictureBox3
             // 
@@ -247,11 +217,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(552, 354);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(606, 354);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.ptminimize);
-            this.Controls.Add(this.ptexit);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -264,14 +232,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnClear);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Đăng nhập";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptminimize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptexit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -292,8 +258,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox ptexit;
-        private System.Windows.Forms.PictureBox ptminimize;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnLogin;
         private Bunifu.Framework.UI.BunifuElipse roundFrmLogin;

@@ -31,6 +31,29 @@ namespace Quiz.DAL
             }
             return list;
         }
+        public List<Student> Search_ClassName(string search)
+        {
+            List<Student> list = new List<Student>();
+            using (SqlCommand dbCmd = new SqlCommand("sp_search_ClassName", openConnection()))
+            {
+                dbCmd.CommandType = CommandType.StoredProcedure;
+                dbCmd.Parameters.Add(new SqlParameter("@classname", SqlDbType.NVarChar)).Value=search;
+                SqlDataReader dr = dbCmd.ExecuteReader();
+                dr.Close();
+                dr = dbCmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        Student obj = new Student();
+                        obj.StudentIDataReader(dr);
+                        list.Add(obj);
+                    }
+                }
+                dr.Close();
+            }
+            return list;
+        }
         public bool Student_Insert(Student data)
         {
             bool check = false;

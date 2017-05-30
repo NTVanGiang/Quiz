@@ -27,8 +27,8 @@ namespace Quiz_Server
             dgvLevel.BackgroundColor = Color.White;
             dgvLevel.ReadOnly = true;
             dgvLevel.DataSource = obj.Level_GetByTop(t, w, o);
-            dgvLevel.Columns[0].HeaderText = "Level ID";
-            dgvLevel.Columns[1].HeaderText = "Level Detail";
+            dgvLevel.Columns[0].HeaderText = "Mã Level";
+            dgvLevel.Columns[1].HeaderText = "Chi tiết Level";
             dgvLevel.Columns[1].Width = 180;
         }
 
@@ -132,11 +132,11 @@ namespace Quiz_Server
                 try
                 {
                     int x = int.Parse(txtSearch.Text);
-                    BinData("", " id = '" + x + "' or detail like '%" + x + "%'", "");
+                    BinData("", " id = '" + x + "' or detail like N'%" + x + "%'", "");
                 }
                 catch
                 {
-                    BinData("", " detail like '%" + txtSearch.Text + "%'", "");
+                    BinData("", " detail like N'%" + txtSearch.Text + "%'", "");
                 }
             }
         }

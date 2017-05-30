@@ -17,8 +17,8 @@ namespace Quiz_Server
         private void BinData(String t, String w, String o)
         {
             dgvSubject.DataSource = obj.Subject_GetByTop(t, w, o);
-            dgvSubject.Columns[0].HeaderText = "Subject ID";
-            dgvSubject.Columns[1].HeaderText = "Subject Name";
+            dgvSubject.Columns[0].HeaderText = "Mã môn học";
+            dgvSubject.Columns[1].HeaderText = "Tên môn học";
             dgvSubject.Columns[1].Width = 180;
         }
         private void Clear()
@@ -30,11 +30,64 @@ namespace Quiz_Server
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private bool ValidField()
+        {
+            return txtSubjectName.Text.Equals(String.Empty) ? true : false;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                try
+                {
+                    int x = int.Parse(txtSearch.Text);
+                    BinData("", " id = '" + x + "' or subjectName like N'%" + x + "%'", "");
+                }
+                catch
+                {
+                    BinData("", " subjectName like N'%" + txtSearch.Text + "%'", "");
+                }
+            }
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            Clear();
+            BinData("", "", "");
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void frmSubject_Load(object sender, EventArgs e)
+        {
+
+            BinData("", "", "");
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
             Clear();
             txtSubjectName.Select();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void btnEdit_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -48,12 +101,7 @@ namespace Quiz_Server
             }
         }
 
-        private bool ValidField()
-        {
-            return txtSubjectName.Text.Equals(String.Empty) ? true : false;
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -77,29 +125,7 @@ namespace Quiz_Server
             }
         }
 
-        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-            {
-                try
-                {
-                    int x = int.Parse(txtSearch.Text);
-                    BinData("", " id = '" + x + "' or subjectName like '%" + x + "%'", "");
-                }
-                catch
-                {
-                    BinData("", " subjectName like '%" + txtSearch.Text + "%'", "");
-                }
-            }
-        }
-
-        private void txtSearch_Leave(object sender, EventArgs e)
-        {
-            Clear();
-            BinData("", "", "");
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSave_Click_1(object sender, EventArgs e)
         {
             if (ValidField())
             {
@@ -134,12 +160,6 @@ namespace Quiz_Server
             }
             BinData("", "", "");
             Clear();
-        }
-
-        private void frmSubject_Load(object sender, EventArgs e)
-        {
-
-            BinData("", "", "");
         }
     }
 }

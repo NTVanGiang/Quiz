@@ -9,6 +9,21 @@ namespace Quiz.Entity
         private string name;
         private string username;
         private string password;
+        private string avatar;
+
+        public Teacher(string id, string name, string username, string password, string avatar)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Username = username;
+            this.Password = password;
+            this.Avatar = avatar;
+        }
+
+        public Teacher()
+        {
+
+        }
 
         public string Id
         {
@@ -61,6 +76,18 @@ namespace Quiz.Entity
                 password = value;
             }
         }
+        public string Avatar
+        {
+            get
+            {
+                return avatar;
+            }
+
+            set
+            {
+                avatar = value;
+            }
+        }
 
         public void TeacherIDataReader(SqlDataReader dr)
         {
@@ -68,6 +95,8 @@ namespace Quiz.Entity
             Name = dr["name"] is DBNull ? string.Empty : dr["name"].ToString();
             Username = dr["username"] is DBNull ? string.Empty : dr["username"].ToString();
             Password = dr["password"] is DBNull ? "" : dr["password"].ToString();
+            //avatar
+            Avatar = dr["avatar"] is DBNull ? "":dr["avatar"].ToString();
         }
     }
 }

@@ -11,6 +11,20 @@ namespace Quiz.Entity
         private string password;
         private string classID;
         private string status;
+        private string className;
+
+        public Student() { }
+
+        public Student(String id, string fullname, string username, string password, string classID, string status)
+        {
+            this.id = id;
+            this.fullname = fullname;
+            this.username = username;
+            this.password = password;
+            this.classID = classID;
+            this.status = status;
+        }
+       
 
         public string Id
         {
@@ -89,6 +103,18 @@ namespace Quiz.Entity
                 status = value;
             }
         }
+        public string ClassName
+        {
+            get
+            {
+                return className;
+            }
+
+            set
+            {
+                className = value;
+            }
+        }
 
         public void StudentIDataReader(SqlDataReader dr)
         {
@@ -98,6 +124,7 @@ namespace Quiz.Entity
             Password = dr["password"] is DBNull ? string.Empty : dr["password"].ToString();
             ClassID = dr["classID"] is DBNull ? string.Empty : dr["classID"].ToString();
             Status = dr["status"] is DBNull ? string.Empty : dr["status"].ToString();
+            ClassName = dr["className"] is DBNull ? string.Empty : dr["className"].ToString(); ;
         }
     }
 }

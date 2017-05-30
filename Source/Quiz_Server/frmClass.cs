@@ -34,15 +34,14 @@ namespace Quiz_Server
             dgvClass.ReadOnly = true;
             List<Class> data = obj.Class_GetByTop(t, w, o);
             dgvClass.DataSource = data;
-            dgvClass.Columns[0].HeaderText = "Class ID";
-            dgvClass.Columns[1].HeaderText = "Class Name";
-            dgvClass.Columns[1].HeaderText = "className";
+            dgvClass.Columns[0].HeaderText = "Mã lớp";
+            dgvClass.Columns[1].HeaderText = "Tên lớp";
 
             //Hide column ID. Just use for update, fill, ...
-            dgvClass.Columns[2].HeaderText = "Faculty ID";
+            dgvClass.Columns[2].HeaderText = "Mã khoa";
             dgvClass.Columns[2].Visible = false;
 
-            dgvClass.Columns[3].HeaderText = "Faculty Name";
+            dgvClass.Columns[3].HeaderText = "Tên khoa";
             dgvClass.Columns[3].Width = 150;
         }
 
@@ -121,11 +120,11 @@ namespace Quiz_Server
                 try
                 {
                     int x = int.Parse(txtSearch.Text);
-                    BinData("", " id = '" + x + "' or className like '%" + x + "%'", "");
+                    BinData("", " id = '" + x + "' or className like N'%" + x + "%'", "");
                 }
                 catch
                 {
-                    BinData("", " className like '%" + txtSearch.Text + "%'", "");
+                    BinData("", " className like N'%" + txtSearch.Text + "%'", "");
                 }
             }
         }
@@ -174,6 +173,11 @@ namespace Quiz_Server
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
         }

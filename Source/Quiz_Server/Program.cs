@@ -14,7 +14,7 @@ namespace Quiz_Server
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Properties.Settings.Default.Language);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmStudent());
+            Application.Run(new frmQuestion());
         }
     }
 }

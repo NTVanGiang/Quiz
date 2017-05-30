@@ -10,17 +10,18 @@ namespace Quiz.Entity
         private string topicID;
         private string levelID;
         private string content;
-        private string reuse;
         private string createDate;
+        private string subjectName;
+        private string topicName;
+        private string levelName;
 
-        public Question(string id, string subjectId, string topicId, string levelId, string content, string reuse, string createDate)
+        public Question(string id, string subjectId, string topicId, string levelId, string content, string createDate)
         {
             this.id = id;
-            subjectID = subjectId;
-            topicID = topicId;
-            levelID = levelId;
+            this.subjectID = subjectId;
+            this.topicID = topicId;
+            this.levelID = levelId;
             this.content = content;
-            this.reuse = reuse;
             this.createDate = createDate;
         }
 
@@ -93,19 +94,6 @@ namespace Quiz.Entity
             }
         }
 
-        public string Reuse
-        {
-            get
-            {
-                return reuse;
-            }
-
-            set
-            {
-                reuse = value;
-            }
-        }
-
         public string CreateDate
         {
             get
@@ -118,6 +106,46 @@ namespace Quiz.Entity
                 createDate = value;
             }
         }
+
+        public string SubjectName
+        {
+            get
+            {
+                return subjectName;
+            }
+
+            set
+            {
+                subjectName = value;
+            }
+        }
+
+        public string TopicName
+        {
+            get
+            {
+                return topicName;
+            }
+
+            set
+            {
+                topicName = value;
+            }
+        }
+
+        public string LevelName
+        {
+            get
+            {
+                return levelName;
+            }
+
+            set
+            {
+                levelName = value;
+            }
+        }
+
         public void QuestionIDataReader(SqlDataReader dr)
         {
             Id = dr["id"] is DBNull ? string.Empty : dr["id"].ToString();
@@ -126,6 +154,9 @@ namespace Quiz.Entity
             LevelID = dr["levelID"] is DBNull ? string.Empty : dr["levelID"].ToString();
             Content = dr["content"] is DBNull ? string.Empty : dr["content"].ToString();
             CreateDate = dr["createDate"] is DBNull ? "" : dr["createDate"].ToString();
+            SubjectName = dr["subjectName"] is DBNull ? string.Empty : dr["subjectName"].ToString();
+            TopicName = dr["topicName"] is DBNull ? string.Empty : dr["topicName"].ToString();
+            LevelName = dr["levelName"] is DBNull ? string.Empty : dr["levelName"].ToString();
         }
     }
 }

@@ -45,7 +45,6 @@ namespace Quiz.DAL
                     dbCmd.Parameters.Add(new SqlParameter("@topicID", data.TopicID));
                     dbCmd.Parameters.Add(new SqlParameter("@levelID", data.LevelID));
                     dbCmd.Parameters.Add(new SqlParameter("@content", data.Content));
-                    dbCmd.Parameters.Add(new SqlParameter("@reuse", data.Reuse));
                     dbCmd.Parameters.Add(new SqlParameter("@createDate", data.CreateDate));
                     int r = dbCmd.ExecuteNonQuery();
                     if (r > 0) check = true;
@@ -70,7 +69,6 @@ namespace Quiz.DAL
                     dbCmd.Parameters.Add(new SqlParameter("@topicID", data.TopicID));
                     dbCmd.Parameters.Add(new SqlParameter("@levelID", data.LevelID));
                     dbCmd.Parameters.Add(new SqlParameter("@content", data.Content));
-                    dbCmd.Parameters.Add(new SqlParameter("@reuse", data.Reuse));
                     dbCmd.Parameters.Add(new SqlParameter("@createDate", data.CreateDate));
                     int r = dbCmd.ExecuteNonQuery();
                     if (r > 0) check = true;

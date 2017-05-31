@@ -80,6 +80,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQuestion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,11 +98,23 @@
     <Compile Include="frmStudent.Designer.cs">
       <DependentUpon>frmStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSubAnswer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubAnswer.Designer.cs">
+      <DependentUpon>frmSubAnswer.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSubject.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSubject.Designer.cs">
       <DependentUpon>frmSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManSubAnswer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManSubAnswer.Designer.cs">
+      <DependentUpon>frmManSubAnswer.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTeacher.cs">
       <SubType>Form</SubType>
@@ -127,14 +145,23 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQuestion.resx">
       <DependentUpon>frmQuestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStudent.resx">
       <DependentUpon>frmStudent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSubAnswer.resx">
+      <DependentUpon>frmSubAnswer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSubject.resx">
       <DependentUpon>frmSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManSubAnswer.resx">
+      <DependentUpon>frmManSubAnswer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTeacher.resx">
       <DependentUpon>frmTeacher.cs</DependentUpon>

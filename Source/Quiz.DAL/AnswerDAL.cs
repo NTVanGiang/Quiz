@@ -41,7 +41,7 @@ namespace Quiz.DAL
                 using (SqlCommand dbCmd = new SqlCommand("sp_Answer_Insert", openConnection()))
                 {
                     dbCmd.CommandType = CommandType.StoredProcedure;
-                    dbCmd.Parameters.Add(new SqlParameter("@questionID", data.QuesionID));
+                    dbCmd.Parameters.Add(new SqlParameter("@subQuestionID", data.SubQuestionID));
                     dbCmd.Parameters.Add(new SqlParameter("@answer", data.Answers));
                     dbCmd.Parameters.Add(new SqlParameter("@isCorrect", data.IsCorrect));
                     int r = dbCmd.ExecuteNonQuery();
@@ -63,7 +63,7 @@ namespace Quiz.DAL
                 {
                     dbCmd.CommandType = CommandType.StoredProcedure;
                     dbCmd.Parameters.Add(new SqlParameter("@id", data.Id));
-                    dbCmd.Parameters.Add(new SqlParameter("@questionID", data.QuesionID));
+                    dbCmd.Parameters.Add(new SqlParameter("@subQuestionID", data.SubQuestionID));
                     dbCmd.Parameters.Add(new SqlParameter("@answer", data.Answers));
                     dbCmd.Parameters.Add(new SqlParameter("@isCorrect", data.IsCorrect));
                     int r = dbCmd.ExecuteNonQuery();

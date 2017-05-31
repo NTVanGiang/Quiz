@@ -10,17 +10,18 @@ namespace Quiz.Entity
         private String content;
         private String reportCount;
         private String active;
+        private String questionName;
 
         public SubQuestion()
         {
         }
 
-        public SubQuestion(string id, string questionId, string content, string reportCount, string active)
+        public SubQuestion(string id, string questionId, string content, string active)
         {
             this.id = id;
             questionID = questionId;
             this.content = content;
-            this.reportCount = reportCount;
+            
             this.active = active;
         }
 
@@ -54,6 +55,12 @@ namespace Quiz.Entity
             set { active = value; }
         }
 
+        public string QuestionName
+        {
+            get { return questionName; }
+            set { questionName = value; }
+        }
+
         public void SubQuestionIDataReader(SqlDataReader dr)
         {
             Id = dr["id"] is DBNull ? string.Empty : dr["id"].ToString();
@@ -61,6 +68,7 @@ namespace Quiz.Entity
             Content = dr["content"] is DBNull ? "" : dr["content"].ToString();
             ReportCount = dr["reportCount"] is DBNull ? string.Empty : dr["reportCount"].ToString();
             Active = dr["active"] is DBNull ? "" : dr["active"].ToString();
+            QuestionName= dr["questionName"] is DBNull ? "" : dr["questionName"].ToString();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Quiz.BUS
     {
         private SubQuestionDAL obj = new SubQuestionDAL();
 
-        public List<SubQuestion> Answer_GetByTop(string Top, string Where, string Order)
+        public List<SubQuestion> SubQuestion_GetByTop(string Top, string Where, string Order)
         {
             return obj.SubQuestion_GetByTop(Top, Where, Order);
         }

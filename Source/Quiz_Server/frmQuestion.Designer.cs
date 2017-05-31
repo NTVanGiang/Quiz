@@ -40,15 +40,15 @@
             this.txtContent = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnDetele = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvQuestion = new System.Windows.Forms.DataGridView();
             this.cmbTopicID = new System.Windows.Forms.ComboBox();
             this.cmbSubjectID = new System.Windows.Forms.ComboBox();
             this.cmbLevelID = new System.Windows.Forms.ComboBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDetele = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -173,54 +173,6 @@
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
-            // btnDetele
-            // 
-            this.btnDetele.Image = global::Quiz_Server.Properties.Resources.button_cancel;
-            this.btnDetele.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDetele.Location = new System.Drawing.Point(428, 218);
-            this.btnDetele.Name = "btnDetele";
-            this.btnDetele.Size = new System.Drawing.Size(105, 39);
-            this.btnDetele.TabIndex = 2;
-            this.btnDetele.Text = "Xóa";
-            this.btnDetele.UseVisualStyleBackColor = true;
-            this.btnDetele.Click += new System.EventHandler(this.btnDetele_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::Quiz_Server.Properties.Resources.table_save;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(556, 218);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(105, 39);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Image = global::Quiz_Server.Properties.Resources._15666017_1795328160733854_677840402_n;
-            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(428, 156);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(105, 39);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "    Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Image = global::Quiz_Server.Properties.Resources._15673324_1795328170733853_973720954_n;
-            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(556, 156);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(105, 39);
-            this.btnEdit.TabIndex = 2;
-            this.btnEdit.Text = "   Sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -264,6 +216,54 @@
             this.cmbLevelID.Size = new System.Drawing.Size(217, 27);
             this.cmbLevelID.TabIndex = 3;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Image = global::Quiz_Server.Properties.Resources._15673324_1795328170733853_973720954_n;
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdit.Location = new System.Drawing.Point(556, 156);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(105, 39);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "   Sửa";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::Quiz_Server.Properties.Resources.table_save;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(556, 218);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(105, 39);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = global::Quiz_Server.Properties.Resources._15666017_1795328160733854_677840402_n;
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdd.Location = new System.Drawing.Point(428, 156);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(105, 39);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "    Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDetele
+            // 
+            this.btnDetele.Image = global::Quiz_Server.Properties.Resources.button_cancel;
+            this.btnDetele.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDetele.Location = new System.Drawing.Point(428, 218);
+            this.btnDetele.Name = "btnDetele";
+            this.btnDetele.Size = new System.Drawing.Size(105, 39);
+            this.btnDetele.TabIndex = 2;
+            this.btnDetele.Text = "Xóa";
+            this.btnDetele.UseVisualStyleBackColor = true;
+            this.btnDetele.Click += new System.EventHandler(this.btnDetele_Click);
+            // 
             // frmQuestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -279,7 +279,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmQuestion";
-            this.Text = "Quản lý câu hỏi";
+            this.Text = "Quản lý câu hỏi cha";
             this.Load += new System.EventHandler(this.frmQuestion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

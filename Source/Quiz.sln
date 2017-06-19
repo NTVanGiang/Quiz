@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz.Entity", "Quiz.Entity\Quiz.Entity.csproj", "{2C96FCB9-3BD9-472A-B770-34B1D10473FC}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz_Client", "Quiz_Client\Quiz_Client.csproj", "{CDFCEB23-BC51-4976-A02E-26B303F820E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quiz_Server", "Quiz_Server\Quiz_Server.csproj", "{EACD6310-6F1A-4571-8CB1-F756B44CABF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{B2344A24-A4ED-4F92-8B2E-ED230B7240FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{EACD6310-6F1A-4571-8CB1-F756B44CABF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EACD6310-6F1A-4571-8CB1-F756B44CABF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EACD6310-6F1A-4571-8CB1-F756B44CABF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2344A24-A4ED-4F92-8B2E-ED230B7240FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2344A24-A4ED-4F92-8B2E-ED230B7240FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2344A24-A4ED-4F92-8B2E-ED230B7240FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2344A24-A4ED-4F92-8B2E-ED230B7240FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

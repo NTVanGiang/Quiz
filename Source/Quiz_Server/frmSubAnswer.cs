@@ -127,7 +127,7 @@ namespace Quiz_Server
             SubQuestion subQuestion = new SubQuestion(txtSubQuestionID.Text, cmbQuestionID.SelectedValue.ToString(), txtContent.Text, active);
             if (txtSubQuestionID.Text.Equals(""))
             {
-                if (objSub.SubQuestion_Insert(subQuestion))
+                if (objSub.SubQuestion_Insert(subQuestion) > 0)
                 {
                     MessageBox.Show("Insert subQuestion successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

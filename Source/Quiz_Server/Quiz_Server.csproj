@@ -62,11 +62,11 @@
     <Compile Include="frmFaculty.Designer.cs">
       <DependentUpon>frmFaculty.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLevel.cs">
+    <Compile Include="frmImport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLevel.Designer.cs">
-      <DependentUpon>frmLevel.cs</DependentUpon>
+    <Compile Include="frmImport.Designer.cs">
+      <DependentUpon>frmImport.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -122,12 +122,6 @@
     <Compile Include="frmTeacher.Designer.cs">
       <DependentUpon>frmTeacher.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTopic.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTopic.Designer.cs">
-      <DependentUpon>frmTopic.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmClass.resx">
@@ -136,8 +130,8 @@
     <EmbeddedResource Include="frmFaculty.resx">
       <DependentUpon>frmFaculty.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLevel.resx">
-      <DependentUpon>frmLevel.cs</DependentUpon>
+    <EmbeddedResource Include="frmImport.resx">
+      <DependentUpon>frmImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -165,9 +159,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTeacher.resx">
       <DependentUpon>frmTeacher.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTopic.resx">
-      <DependentUpon>frmTopic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

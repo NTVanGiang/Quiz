@@ -181,5 +181,10 @@ namespace Quiz_Server
         {
 
         }
+
+        private void frmClass_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            new frmMenu().Show();
+        }
     }
 }

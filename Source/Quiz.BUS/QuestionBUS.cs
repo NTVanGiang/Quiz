@@ -12,7 +12,7 @@ namespace Quiz.BUS
         {
             return obj.Question_GetByTop(Top, Where, Order);
         }
-        public bool Question_Insert(Question data)
+        public int Question_Insert(Question data)
         {
             return obj.Question_Insert(data);
         }

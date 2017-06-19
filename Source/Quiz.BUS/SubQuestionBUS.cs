@@ -15,7 +15,7 @@ namespace Quiz.BUS
             return obj.SubQuestion_GetByTop(Top, Where, Order);
         }
 
-        public bool SubQuestion_Insert(SubQuestion data)
+        public int SubQuestion_Insert(SubQuestion data)
         {
             return obj.SubQuestion_Insert(data);
         }

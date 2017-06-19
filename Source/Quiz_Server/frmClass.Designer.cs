@@ -259,6 +259,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmClass";
             this.Text = "Quản lý lớp";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmClass_FormClosed);
             this.Load += new System.EventHandler(this.frmClass_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClass)).EndInit();

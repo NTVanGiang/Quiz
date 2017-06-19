@@ -41,14 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SubQuestionBUS.cs" />
-    <Compile Include="TopicBUS.cs" />
     <Compile Include="TeacherBUS.cs" />
     <Compile Include="SubjectBUS.cs" />
     <Compile Include="StudentBUS.cs" />
     <Compile Include="ResultBUS.cs" />
     <Compile Include="QuizBUS.cs" />
     <Compile Include="QuestionBUS.cs" />
-    <Compile Include="LevelBUS.cs" />
     <Compile Include="ImageBUS.cs" />
     <Compile Include="FacultyBUS.cs" />
     <Compile Include="ClassBUS.cs" />

@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 using Quiz.Entity;
+using System;
 
 namespace Quiz.DAL
 {
@@ -33,9 +34,9 @@ namespace Quiz.DAL
             }
             return list;
         }
-        public bool SubQuestion_Insert(SubQuestion data)
+        public int SubQuestion_Insert(SubQuestion data)
         {
-            bool check = false;
+            int id = -1;
             try
             {
                 using (SqlCommand dbCmd = new SqlCommand("sp_SubQuestion_Insert", openConnection()))
@@ -44,14 +45,15 @@ namespace Quiz.DAL
                     dbCmd.Parameters.Add(new SqlParameter("@questionID", data.QuestionId));
                     dbCmd.Parameters.Add(new SqlParameter("@content", data.Content));
                     dbCmd.Parameters.Add(new SqlParameter("@active", data.Active));
-                    int r = dbCmd.ExecuteNonQuery();
-                    if (r > 0) check = true;
+                    dbCmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    dbCmd.ExecuteNonQuery();
+                    id = int.Parse(dbCmd.Parameters["@id"].Value.ToString());
                 }
             }
             catch
             {
             }
-            return check;
+            return id;
         }
 
         public bool SubQuestion_Update(SubQuestion data)

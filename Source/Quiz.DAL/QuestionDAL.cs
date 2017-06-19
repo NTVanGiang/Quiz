@@ -1,5 +1,5 @@
 ﻿using Quiz.Entity;
-
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -33,31 +33,32 @@ namespace Quiz.DAL
             }
             return list;
         }
-        public bool Question_Insert(Question data)
+        public int Question_Insert(Question data)
         {
-            bool check = false;
+            int id = -1;
+            data.CreateDate = DateTime.Now.ToString();
             try
             {
                 using (SqlCommand dbCmd = new SqlCommand("sp_Question_Insert", openConnection()))
                 {
                     dbCmd.CommandType = CommandType.StoredProcedure;
                     dbCmd.Parameters.Add(new SqlParameter("@subjectID", data.SubjectID));
-                    dbCmd.Parameters.Add(new SqlParameter("@topicID", data.TopicID));
-                    dbCmd.Parameters.Add(new SqlParameter("@levelID", data.LevelID));
                     dbCmd.Parameters.Add(new SqlParameter("@content", data.Content));
                     dbCmd.Parameters.Add(new SqlParameter("@createDate", data.CreateDate));
-                    int r = dbCmd.ExecuteNonQuery();
-                    if (r > 0) check = true;
+                    dbCmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    dbCmd.ExecuteNonQuery();
+                    id = int.Parse(dbCmd.Parameters["@id"].Value.ToString());
                 }
             }
             catch
             {
             }
-            return check;
+            return id;
         }
 
         public bool Question_Update(Question data)
         {
+            data.CreateDate = DateTime.Now.ToString();
             bool check = false;
             try
             {
@@ -66,10 +67,8 @@ namespace Quiz.DAL
                     dbCmd.CommandType = CommandType.StoredProcedure;
                     dbCmd.Parameters.Add(new SqlParameter("@id", data.Id));
                     dbCmd.Parameters.Add(new SqlParameter("@subjectID", data.SubjectID));
-                    dbCmd.Parameters.Add(new SqlParameter("@topicID", data.TopicID));
-                    dbCmd.Parameters.Add(new SqlParameter("@levelID", data.LevelID));
                     dbCmd.Parameters.Add(new SqlParameter("@content", data.Content));
-                    dbCmd.Parameters.Add(new SqlParameter("@createDate", data.CreateDate));
+                    //dbCmd.Parameters.Add(new SqlParameter("@createDate", data.CreateDate));
                     int r = dbCmd.ExecuteNonQuery();
                     if (r > 0) check = true;
                 }

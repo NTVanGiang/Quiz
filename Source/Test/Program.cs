@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Quiz_Server
+namespace Test
 {
     static class Program
     {
@@ -11,10 +14,9 @@ namespace Quiz_Server
         [STAThread]
         static void Main()
         {
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Properties.Settings.Default.Language);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmImport());
+            Application.Run(new Form1());
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Quiz.DAL
 {
     public class SqlDataProvider
     {
-        private static String strcon = "Data Source=(local);Initial Catalog=Quiz;Integrated Security=True";
+        private static String strcon = "Data Source=.;Initial Catalog=Quiz;Integrated Security=True";
         protected static SqlConnection conn;
         public SqlDataProvider()
         {

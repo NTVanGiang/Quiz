@@ -24,74 +24,45 @@ namespace Quiz_Server
 
         private void quảnLySinhViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmStudent frm = new frmStudent();
+            new frmStudent().Show();
             this.Hide();
-            frm.ShowDialog();
-            this.Show();
         }
 
         private void quảnLýGiảngViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTeacher frm = new frmTeacher();
+            new frmTeacher().Show();
             this.Hide();
-            frm.ShowDialog();
-            this.Show();
         }
 
         private void quảnLýLớpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmClass frm = new frmClass();
+            new frmClass().Show();
             this.Hide();
-            frm.ShowDialog();
-            this.Show();
         }
 
         private void quảnLýKhoaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmFaculty frm = new frmFaculty();
+            new frmFaculty().Show();
             this.Hide();
-            frm.ShowDialog();
-            this.Show();
         }
 
         private void mônHọcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmSubject frm = new frmSubject();
+            new frmSubject().Show();
             this.Hide();
-            frm.ShowDialog();
-            this.Show();
         }
-
-        private void chủĐềToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmTopic frm = new frmTopic();
-            this.Hide();
-            frm.ShowDialog();
-            this.Show();
-        }
-
-        private void mứcĐộToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmLevel frm = new frmLevel();
-            this.Hide();
-            frm.ShowDialog();
-            this.Show();
-        }
+        
 
         private void câuHỏiChaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmQuestion frm = new frmQuestion();
+            new frmQuestion().Show();
             this.Hide();
-            frm.ShowDialog();
-            this.Show();
         }
 
         private void SubMenuSubAnswer_Click(object sender, EventArgs e)
         {
-            frmManSubAnswer frm = new frmManSubAnswer();
+            new frmManSubAnswer().Show();
             this.Hide();
-            frm.ShowDialog();
-            this.Show();
         }
     }
 }

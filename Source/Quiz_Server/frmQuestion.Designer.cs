@@ -36,12 +36,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbSubject = new System.Windows.Forms.ComboBox();
             this.pnData = new System.Windows.Forms.Panel();
-            this.pnView = new System.Windows.Forms.Panel();
             this.dgrQuestion = new System.Windows.Forms.DataGridView();
-            this.txtView = new System.Windows.Forms.TextBox();
+            this.pnView = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnFilter.SuspendLayout();
             this.pnData.SuspendLayout();
-            this.pnView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrQuestion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +54,7 @@
             this.pnFilter.Controls.Add(this.cmbSubject);
             this.pnFilter.Location = new System.Drawing.Point(13, 13);
             this.pnFilter.Name = "pnFilter";
-            this.pnFilter.Size = new System.Drawing.Size(819, 100);
+            this.pnFilter.Size = new System.Drawing.Size(1047, 100);
             this.pnFilter.TabIndex = 0;
             // 
             // btnImport
@@ -118,14 +117,6 @@
             this.pnData.Size = new System.Drawing.Size(416, 359);
             this.pnData.TabIndex = 1;
             // 
-            // pnView
-            // 
-            this.pnView.Controls.Add(this.txtView);
-            this.pnView.Location = new System.Drawing.Point(435, 120);
-            this.pnView.Name = "pnView";
-            this.pnView.Size = new System.Drawing.Size(397, 359);
-            this.pnView.TabIndex = 2;
-            // 
             // dgrQuestion
             // 
             this.dgrQuestion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -135,19 +126,26 @@
             this.dgrQuestion.Size = new System.Drawing.Size(416, 359);
             this.dgrQuestion.TabIndex = 0;
             // 
-            // txtView
+            // pnView
             // 
-            this.txtView.Location = new System.Drawing.Point(4, 4);
-            this.txtView.Multiline = true;
-            this.txtView.Name = "txtView";
-            this.txtView.Size = new System.Drawing.Size(390, 352);
-            this.txtView.TabIndex = 0;
+            this.pnView.Location = new System.Drawing.Point(435, 120);
+            this.pnView.Name = "pnView";
+            this.pnView.Size = new System.Drawing.Size(354, 359);
+            this.pnView.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(795, 119);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(258, 364);
+            this.panel1.TabIndex = 2;
             // 
             // frmQuestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 491);
+            this.ClientSize = new System.Drawing.Size(1072, 495);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnView);
             this.Controls.Add(this.pnData);
             this.Controls.Add(this.pnFilter);
@@ -158,8 +156,6 @@
             this.pnFilter.ResumeLayout(false);
             this.pnFilter.PerformLayout();
             this.pnData.ResumeLayout(false);
-            this.pnView.ResumeLayout(false);
-            this.pnView.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrQuestion)).EndInit();
             this.ResumeLayout(false);
 
@@ -177,6 +173,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.DataGridView dgrQuestion;
-        private System.Windows.Forms.TextBox txtView;
+        private System.Windows.Forms.Panel panel1;
     }
 }

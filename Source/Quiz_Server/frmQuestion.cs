@@ -28,19 +28,57 @@ namespace Quiz_Server
             new frmImport().ShowDialog();
         }
 
-        private void BindQuestionData(string t, string w, string o)
+        private void BindQuestionData(string t = "", string w = "", string o = "")
         {
 
             dgrQuestion.DataSource = new QuestionBUS().Question_GetByTop(t, w, o);
-            dgrQuestion.Columns["id"].Visible = false;
+            dgrQuestion.Columns["id"].DisplayIndex = 0;
+            dgrQuestion.Columns["id"].HeaderText = "#";
             dgrQuestion.Columns["subjectID"].Visible = false;
             dgrQuestion.Columns["subjectName"].HeaderText = "Môn học";
-            dgrQuestion.Columns["subjectName"].DisplayIndex = 0;
+            dgrQuestion.Columns["subjectName"].DisplayIndex = 1;
             dgrQuestion.Columns["subjectName"].Width = 160;
+            dgrQuestion.Columns["content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgrQuestion.Columns["content"].HeaderText = "Câu hỏi";
-            dgrQuestion.Columns["content"].DisplayIndex = 1;
-            dgrQuestion.Columns["createDate"].DisplayIndex = 2;
+            dgrQuestion.Columns["content"].DisplayIndex = 2;
+            dgrQuestion.Columns["createDate"].DisplayIndex = 3;
             dgrQuestion.Columns["createDate"].HeaderText = "Ngày tạo";
+        }
+        private void BindSubQuestionData(string t = "", string w = "", string o = "")
+        {
+
+            dgrSubQuestion.DataSource = new SubQuestionBUS().SubQuestion_GetByTop(t, w, o);
+            dgrSubQuestion.Columns["id"].DisplayIndex = 0;
+            dgrSubQuestion.Columns["id"].HeaderText = "#";
+            dgrSubQuestion.Columns["questionID"].Visible = false;
+            dgrSubQuestion.Columns["content"].HeaderText = "Câu hỏi con";
+            dgrSubQuestion.Columns["content"].DisplayIndex = 1;
+            dgrSubQuestion.Columns["content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgrSubQuestion.Columns["reportCount"].HeaderText = "Report";
+            dgrSubQuestion.Columns["reportCount"].DisplayIndex = 2;
+            dgrSubQuestion.Columns["active"].DisplayIndex = 3;
+            dgrSubQuestion.Columns["active"].HeaderText = "Active";
+        }
+
+        private void BindAnswerData(List<Answer> lst = null, string t = "", string w = "", string o = "")
+        {
+
+            if (lst == null)
+            {
+                dgrAnswer.DataSource = new AnswerBUS().Answer_GetByTop(t, w, o);
+            }
+            else
+            {
+                dgrAnswer.DataSource = lst;
+            }
+            dgrAnswer.Columns["id"].DisplayIndex = 0;
+            dgrAnswer.Columns["id"].HeaderText = "#";
+            dgrAnswer.Columns["subQuestionID"].Visible = false;
+            dgrAnswer.Columns["answers"].HeaderText = "Câu trả lời";
+            dgrAnswer.Columns["answers"].DisplayIndex = 1;
+            dgrAnswer.Columns["answers"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgrAnswer.Columns["isCorrect"].HeaderText = "Đáp án";
+            dgrAnswer.Columns["isCorrect"].DisplayIndex = 2;
         }
 
         private void BindCmbSubject()
@@ -53,15 +91,10 @@ namespace Quiz_Server
             cmbSubject.SelectedIndex = 0;
         }
 
-        private void frmQuestion_Load(object sender, EventArgs e)
-        {
-            BindCmbSubject();
-            BindQuestionData("", "", "");
-        }
 
         private void cmbSubject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbSubject.SelectedIndex == 0)
+            if (cmbSubject.SelectedIndex == 0)
             {
                 BindQuestionData("", "", "");
             }
@@ -71,16 +104,113 @@ namespace Quiz_Server
             }
         }
 
-        private void dgrQuestion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void frmQuestion_Load(object sender, EventArgs e)
         {
-            string content = "";
+            BindCmbSubject();
+            BindQuestionData();
+            //BindSubQuestionData();
+            //BindAnswerData();
+        }
+
+        private void dgrQuestion_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string txtView = "";
             int row = e.RowIndex;
+            if (row < 0) return;
             string qID = dgrQuestion.Rows[row].Cells["id"].Value.ToString();
-            List<SubQuestion> lstSub = sqbus.SubQuestion_GetByTop("", "questionID = '"+qID+"'", "");
-            foreach(SubQuestion sq in lstSub)
+            List<SubQuestion> lstSub = sqbus.SubQuestion_GetByTop("", "questionID = '" + qID + "'", "");
+            BindSubQuestionData("", "questionID='" + qID + "'", "");
+            List<Answer> lstAnswer = new List<Answer>();
+            if (dgrQuestion.Rows[row].Cells["content"].Value.ToString() != "")
             {
-                content += sq.Content + "\r\n";
+                txtView += dgrQuestion.Rows[row].Cells["content"].Value.ToString() + "\r\n";
             }
+            foreach (SubQuestion sq in lstSub)
+            {
+                txtView += "Câu hỏi: " + sq.Content + "\r\n";
+                List<Answer> lst = abus.Answer_GetByTop("", "subQuestionID = '" + sq.Id + "'", "");
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    Answer ans = lst.ElementAt(i);
+                    lstAnswer.Add(ans);
+                    if (ans.IsCorrect == "True")
+                    {
+                        txtView += "    " + (char)(65 + i) + ". " + ans.Answers + " *\r\n";
+                    }
+                    else
+                    {
+                        txtView += "    " + (char)(65 + i) + ". " + ans.Answers + "\r\n";
+                    }
+                }
+                txtView += "\r\n";
+            }
+            txtDisplay.Text = txtView;
+
+            BindAnswerData(lstAnswer);
+        }
+
+        private void dgrSubQuestion_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            if (row < 0) return;
+            string subID = dgrSubQuestion.Rows[row].Cells["id"].Value.ToString();
+            BindAnswerData(null, "", "subQuestionID = '" + subID + "'", "");
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            new frmQuestionDetail().ShowDialog();
+        }
+
+        private void dgrQuestion_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    dgrQuestion.Rows[e.RowIndex].Selected = true;
+                }
+            }
+        }
+
+        private void btnDeleteQuestion_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn muốn xóa bản ghi này?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (qbus.Question_Delete(dgrQuestion.CurrentRow.Cells["id"].Value.ToString()))
+                {
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BindQuestionData();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void ctmDgrQuestion_Opening(object sender, CancelEventArgs e)
+        {
+            if (dgrQuestion.CurrentRow.Index < 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void btnEditQuestion_Click(object sender, EventArgs e)
+        {
+            string selectedValue = dgrQuestion.CurrentRow.Cells["subjectID"].Value.ToString();
+            bool isSingle = true;
+            string qid = dgrQuestion.CurrentRow.Cells["id"].Value.ToString();
+            
+
+            new frmQuestionDetail(true, isSingle, selectedValue, qid).ShowDialog();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            BindQuestionData();
         }
     }
 }

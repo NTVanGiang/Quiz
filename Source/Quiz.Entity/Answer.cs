@@ -9,7 +9,7 @@ namespace Quiz.Entity
         private string subQuestionID;
         private string answer;
         private string isCorrect;
-        private string subquestionName;
+        //private string subquestionName;
 
         public Answer(string id, string subQuestionID, string answer, string isCorrect)
         {
@@ -74,18 +74,18 @@ namespace Quiz.Entity
                 isCorrect = value;
             }
         }
-        public string SubQuestionName
-        {
-            get
-            {
-                return subquestionName;
-            }
+        //public string SubQuestionName
+        //{
+        //    get
+        //    {
+        //        return subquestionName;
+        //    }
 
-            set
-            {
-                subquestionName = value;
-            }
-        }
+        //    set
+        //    {
+        //        subquestionName = value;
+        //    }
+        //}
 
         public void AnswerIDataReader(SqlDataReader dr)
         {
@@ -93,7 +93,7 @@ namespace Quiz.Entity
             SubQuestionID = dr["subQuestionID"] is DBNull ? string.Empty : dr["subQuestionID"].ToString();
             Answers = dr["answer"] is DBNull ? string.Empty : dr["answer"].ToString();
             IsCorrect = dr["isCorrect"] is DBNull ? "" : dr["isCorrect"].ToString();
-            SubQuestionName = dr["subquestionName"] is DBNull ? "" : dr["subquestionName"].ToString();
+            //SubQuestionName = dr["subquestionName"] is DBNull ? "" : dr["subquestionName"].ToString();
         }
     }
 }

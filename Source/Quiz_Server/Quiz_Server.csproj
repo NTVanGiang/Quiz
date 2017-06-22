@@ -92,6 +92,18 @@
     <Compile Include="frmQuestion.Designer.cs">
       <DependentUpon>frmQuestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmQuestionDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuestionDetail.Designer.cs">
+      <DependentUpon>frmQuestionDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuestionGuide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuestionGuide.Designer.cs">
+      <DependentUpon>frmQuestionGuide.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +156,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuestion.resx">
       <DependentUpon>frmQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuestionDetail.resx">
+      <DependentUpon>frmQuestionDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuestionGuide.resx">
+      <DependentUpon>frmQuestionGuide.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStudent.resx">
       <DependentUpon>frmStudent.cs</DependentUpon>

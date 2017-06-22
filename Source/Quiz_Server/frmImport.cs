@@ -20,7 +20,8 @@ namespace Quiz_Server
         private SubQuestionBUS sqbus = new SubQuestionBUS();
         private AnswerBUS abus = new AnswerBUS();
 
-        private List<SimpleQuestion> lst = new List<SimpleQuestion>();
+        private List<SimpleQuestion> lstSimple = new List<SimpleQuestion>();
+        private List<MultiQuestion> lstMulti = new List<MultiQuestion>();
         public frmImport()
         {
             InitializeComponent();
@@ -45,11 +46,9 @@ namespace Quiz_Server
 
         private void GetData(object path)
         {
-            //numOfAnswer++;
-            SimpleQuestion qItem = null;
-
+            //numOfAnswer++            
             Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application();
-
+            SimpleQuestion qItem = null;
             // Define an object to pass to the API for missing parameters
             object miss = System.Reflection.Missing.Value;
             object readOnly = true;
@@ -62,7 +61,68 @@ namespace Quiz_Server
             for (int i = 1; i <= docs.Paragraphs.Count; i++)
             {
                 string temp = docs.Paragraphs[i].Range.Text.Trim();
-                if (temp != string.Empty)
+                if (temp.Trim().ToLower().Equals("<multi>"))
+                {
+                    MultiQuestion qMul = new MultiQuestion();
+                    do
+                    {
+                        temp = docs.Paragraphs[++i].Range.Text;
+                        if (temp.Trim() == "") break;
+                        qMul.content += temp + "\r\n";
+                    } while (temp != string.Empty);
+                    if (temp.Trim() != "")
+                    {
+                        MessageBox.Show("Lỗi cú pháp sau \"" + qMul.content + "\"...");
+                        lstSimple.Clear(); lstMulti.Clear();
+                        return;
+                    }
+                    while (!temp.Trim().ToLower().Equals("</multi>"))
+                    {
+                        temp = docs.Paragraphs[++i].Range.Text.Trim();
+                        if (temp != "")
+                        {
+                            qItem = new SimpleQuestion();
+                            qItem.question = temp;
+                            qItem.correctAnswer = -1;
+                            List<string> answer = new List<string>();
+                            do
+                            {
+                                temp = docs.Paragraphs[++i].Range.Text.Trim();
+                                if (temp == string.Empty || temp.ToLower().Equals("</multi>")) break;
+                                temp = Regex.Replace(temp, "[a-z1-4](\\.|\\))[ \t]+", "", RegexOptions.IgnoreCase);
+                                if (temp.EndsWith("*"))
+                                {
+                                    qItem.correctAnswer = answer.Count;
+                                    temp = temp.Substring(0, temp.Length - 1).Trim();
+                                    answer.Add(temp);
+                                }
+                                else
+                                {
+                                    answer.Add(temp);
+                                }
+                            } while (temp != string.Empty);
+                            qItem.answer = answer;
+                            if (qItem.correctAnswer != -1)
+                                qMul.lstQuestion.Add(qItem);
+                            else
+                            {
+                                MessageBox.Show("Câu \"" + qItem.question + "\" chưa có đáp án đúng");
+                                lstSimple.Clear(); lstMulti.Clear();
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi cú trong câu " + qMul.content + "\"...");
+                            lstSimple.Clear(); lstMulti.Clear();
+                            return;
+                        }
+                    }
+                    lstMulti.Add(qMul);
+                    //Ignore blank paragraph
+                    i++;
+                }
+                else if (temp != string.Empty)
                 {
                     if (flag % 2 == 0)
                     {
@@ -92,12 +152,12 @@ namespace Quiz_Server
                             temp = docs.Paragraphs[++i].Range.Text.Trim();
                         }
                         qItem.answer = answer;
-                        if(qItem.correctAnswer != -1)
-                            lst.Add(qItem);
+                        if (qItem.correctAnswer != -1)
+                            lstSimple.Add(qItem);
                         else
                         {
-                            MessageBox.Show("Câu \""+ qItem.question +"\" chưa có đáp án đúng");
-                            lst.Clear();
+                            MessageBox.Show("Câu \"" + qItem.question + "\" chưa có đáp án đúng");
+                            lstSimple.Clear(); lstMulti.Clear();
                             return;
                         }
                     }
@@ -105,17 +165,32 @@ namespace Quiz_Server
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi cú pháp sau câu " + lst.ElementAt(lst.Count-1).question);
-                    lst.Clear();
+                    MessageBox.Show("Lỗi cú pháp sau câu " + lstSimple.ElementAt(lstSimple.Count - 1).question);
+                    lstSimple.Clear(); lstMulti.Clear();
                     return;
                 }
             }
             docs.Close();
             word.Quit();
+            BindSimpleQuestion(lstSimple);
+            BindMultiQuestion(lstMulti);
+        }
+
+        private void BindSimpleQuestion(List<SimpleQuestion> lst)
+        {
             //Bind data to gridview
-            dgView.DataSource = lst;
-            dgView.Columns[1].Visible = false;
-            dgView.Columns[1].Width = 300;
+            dgrSimpleQuestion.DataSource = lst;
+            dgrSimpleQuestion.Columns[1].Visible = false;
+            dgrSimpleQuestion.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgrSimpleQuestion.Columns[0].HeaderText = "Câu hỏi";
+        }
+
+        private void BindMultiQuestion(List<MultiQuestion> lst)
+        {
+            //Bind data to gridview
+            dgrMultiQuestion.DataSource = lst;
+            dgrMultiQuestion.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgrMultiQuestion.Columns[0].HeaderText = "Câu hỏi";
         }
 
         private void BindCmbSubject()
@@ -134,28 +209,27 @@ namespace Quiz_Server
 
         private void dgView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0) return;
             string question = "Câu hỏi: ";
-            SimpleQuestion sq = lst.ElementAt(e.RowIndex);
+            SimpleQuestion sq = lstSimple.ElementAt(e.RowIndex);
             question += sq.question + "\r\n";
-            question += "=======================\r\n";
             for (int i = 0; i < sq.answer.Count; ++i)
             {
                 question += (char)(65 + i) + ". " + sq.answer.ElementAt(i) + "\r\n";
             }
-            question += "=======================\r\n";
-            question += "Đáp án đúng: " + (char)(65 + sq.correctAnswer);
+            question += "=> Đáp án đúng: " + (char)(65 + sq.correctAnswer) + "\r\n";
             txtView.Text = question;
-        }
-
-        private void dgView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            if(cmbSubject.SelectedIndex < 1)
+            {
+                MessageBox.Show("Chọn môn học trước khi nhập vào csdl", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            } 
             int success = 0, qid = -1, sqid = -1;
-            foreach (SimpleQuestion sq in lst)
+            foreach (SimpleQuestion sq in lstSimple)
             {
                 if ((qid = qbus.Question_Insert(new Question(null, cmbSubject.SelectedValue.ToString(), null, null))) > 0)
                 {
@@ -183,7 +257,61 @@ namespace Quiz_Server
                     }
                 }
             }
-            MessageBox.Show("Nhập " + success + "/"+lst.Count+" bản ghi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            foreach(MultiQuestion mq in lstMulti)
+            {
+                if((qid = qbus.Question_Insert(new Question(null, cmbSubject.SelectedValue.ToString(), mq.content, null))) > 0)
+                {
+                    foreach(SimpleQuestion sq in mq.lstQuestion)
+                    {
+                        int count = sq.answer.Count;
+                        if((sqid = sqbus.SubQuestion_Insert(new SubQuestion(null,qid.ToString(),sq.question,"true"))) > 0)
+                        {
+                            for(int i = 0;i < sq.answer.Count; ++i)
+                            {
+                                if(sq.correctAnswer == i)
+                                {
+                                    if (abus.Answer_Insert(new Answer(null, sqid.ToString(), sq.answer.ElementAt(i), "true"))) count--;
+
+                                }
+                                else
+                                {
+                                    if (abus.Answer_Insert(new Answer(null, sqid.ToString(), sq.answer.ElementAt(i), "false"))) count--;
+                                }
+                            }
+                        }
+                        if (count != 0) MessageBox.Show("Lỗi khi thêm vào csdl");
+                    }
+                }
+                success++;
+            }
+            if(MessageBox.Show("Nhập " + success + "/" + (lstSimple.Count + lstMulti.Count) + " bản ghi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
+
+        private void dgrMultiQuestion_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string question = "";
+            if (e.RowIndex < 0) return;
+            MultiQuestion mq = lstMulti.ElementAt(e.RowIndex);
+            question += mq.content;
+            question += "================================================" + "\r\n";
+            foreach (SimpleQuestion sq in mq.lstQuestion)
+            {
+                question += sq.question + "\r\n";
+                for (int i = 0; i < sq.answer.Count; ++i)
+                {
+                    question += (char)(65 + i) + ". " + sq.answer.ElementAt(i) + "\r\n";
+                }
+                question += "=> Đáp án đúng: " + (char)(65 + sq.correctAnswer) + "\r\n\r\n";
+            }
+            txtView.Text = question;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

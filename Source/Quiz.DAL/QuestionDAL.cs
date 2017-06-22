@@ -66,9 +66,7 @@ namespace Quiz.DAL
                 {
                     dbCmd.CommandType = CommandType.StoredProcedure;
                     dbCmd.Parameters.Add(new SqlParameter("@id", data.Id));
-                    dbCmd.Parameters.Add(new SqlParameter("@subjectID", data.SubjectID));
                     dbCmd.Parameters.Add(new SqlParameter("@content", data.Content));
-                    //dbCmd.Parameters.Add(new SqlParameter("@createDate", data.CreateDate));
                     int r = dbCmd.ExecuteNonQuery();
                     if (r > 0) check = true;
                 }

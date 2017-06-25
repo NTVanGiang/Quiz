@@ -8,11 +8,10 @@ namespace Quiz.Entity
         private string id;
         private string subjectID;
         private string quizName;
-        private string questionCount;
-        private string timeStart;
         private string time;
-        private string questionList;
         private string teacherID;
+        private string teacherName;
+        private string subjectName;
 
         public string Id
         {
@@ -53,32 +52,6 @@ namespace Quiz.Entity
             }
         }
 
-        public string QuestionCount
-        {
-            get
-            {
-                return questionCount;
-            }
-
-            set
-            {
-                questionCount = value;
-            }
-        }
-
-        public string TimeStart
-        {
-            get
-            {
-                return timeStart;
-            }
-
-            set
-            {
-                timeStart = value;
-            }
-        }
-
         public string Time
         {
             get
@@ -89,19 +62,6 @@ namespace Quiz.Entity
             set
             {
                 time = value;
-            }
-        }
-
-        public string QuestionList
-        {
-            get
-            {
-                return questionList;
-            }
-
-            set
-            {
-                questionList = value;
             }
         }
 
@@ -117,16 +77,43 @@ namespace Quiz.Entity
                 teacherID = value;
             }
         }
+        public string TeacherName
+        {
+            get
+            {
+                return teacherName;
+            }
+
+            set
+            {
+                teacherName = value;
+            }
+        }
+        public string SubJectName
+        {
+            get
+            {
+                return subjectName;
+            }
+
+            set
+            {
+                subjectName = value;
+            }
+        }
+        public string QCountSingle { get; set; }
+        public string QCountMultiple { get; set; }
         public void QuizIDataReader(SqlDataReader dr)
         {
             Id = dr["id"] is DBNull ? string.Empty : dr["id"].ToString();
             SubjectID = dr["subjectID"] is DBNull ? string.Empty : dr["subjectID"].ToString();
             QuizName = dr["quizName"] is DBNull ? string.Empty : dr["quizName"].ToString();
-            QuestionCount = dr["questionCount"] is DBNull ? "" : dr["questionCount"].ToString();
-            TimeStart = dr["timeStart"] is DBNull ? string.Empty : dr["timeStart"].ToString();
+            QCountMultiple = dr["qCountMultiple"] is DBNull ? "" : dr["qCountMultiple"].ToString();
+            QCountSingle = dr["qCountSingle"] is DBNull ? "" : dr["qCountSingle"].ToString();
             Time = dr["time"] is DBNull ? string.Empty : dr["time"].ToString();
-            QuestionList = dr["questionList"] is DBNull ? string.Empty : dr["questionList"].ToString();
             TeacherID = dr["teacherID"] is DBNull ? "" : dr["teacherID"].ToString();
+            TeacherName = dr["teacherName"] is DBNull ? "" : dr["teacherName"].ToString();
+            SubJectName = dr["subjectName"] is DBNull ? "" : dr["subjectName"].ToString();
         }
     }
 }

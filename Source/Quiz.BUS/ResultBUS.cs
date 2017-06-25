@@ -12,12 +12,12 @@ namespace Quiz.BUS
         {
             return obj.Result_GetByTop(Top, Where, Order);
         }
-        public bool Result_Insert(Result data)
+        public int Result_Insert(Result data)
         {
             return obj.Result_Insert(data);
         }
 
-        public bool Result_Update(Result data)
+        public int Result_Update(Result data)
         {
             return obj.Result_Update(data);
         }

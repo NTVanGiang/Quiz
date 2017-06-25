@@ -42,15 +42,18 @@
   <ItemGroup>
     <Compile Include="Answer.cs" />
     <Compile Include="Class.cs" />
+    <Compile Include="Exam.cs" />
     <Compile Include="Faculty.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="MultiQuestion.cs" />
+    <Compile Include="ResultDetail.cs" />
     <Compile Include="SimpleQuestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Quiz.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="StudentExam.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="SubQuestion.cs" />
     <Compile Include="Teacher.cs" />

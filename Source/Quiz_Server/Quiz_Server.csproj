@@ -33,9 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="bunifu_ui_v1.52">
-      <HintPath>..\..\Resource\bunifu_ui_v1.52.dll</HintPath>
-    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=11.2.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
@@ -80,12 +78,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMenu.Designer.cs">
-      <DependentUpon>frmMenu.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmQuestion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,29 +96,23 @@
     <Compile Include="frmQuestionGuide.Designer.cs">
       <DependentUpon>frmQuestionGuide.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmQuiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuiz.Designer.cs">
+      <DependentUpon>frmQuiz.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStudent.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmStudent.Designer.cs">
       <DependentUpon>frmStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSubAnswer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSubAnswer.Designer.cs">
-      <DependentUpon>frmSubAnswer.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmSubject.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSubject.Designer.cs">
       <DependentUpon>frmSubject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmManSubAnswer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmManSubAnswer.Designer.cs">
-      <DependentUpon>frmManSubAnswer.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTeacher.cs">
       <SubType>Form</SubType>
@@ -151,9 +137,6 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMenu.resx">
-      <DependentUpon>frmMenu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmQuestion.resx">
       <DependentUpon>frmQuestion.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,40 +146,39 @@
     <EmbeddedResource Include="frmQuestionGuide.resx">
       <DependentUpon>frmQuestionGuide.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmQuiz.resx">
+      <DependentUpon>frmQuiz.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmStudent.resx">
       <DependentUpon>frmStudent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSubAnswer.resx">
-      <DependentUpon>frmSubAnswer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmSubject.resx">
       <DependentUpon>frmSubject.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmManSubAnswer.resx">
-      <DependentUpon>frmManSubAnswer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTeacher.resx">
       <DependentUpon>frmTeacher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\close.png" />
+    <None Include="Resources\mark.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -210,24 +192,6 @@
       <Project>{2c96fcb9-3bd9-472a-b770-34b1d10473fc}</Project>
       <Name>Quiz.Entity</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\1490393797_button_shape_line.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\1490434628_minus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\maximize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\minimize.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
@@ -268,57 +232,17 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Library\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ICON\15644841_1795328167400520_1747285777_n.png" />
-    <Content Include="ICON\15645167_1795328157400521_1795090819_n.jpg" />
-    <Content Include="ICON\15666017_1795328160733854_677840402_n.png" />
-    <Content Include="ICON\15673324_1795328170733853_973720954_n.png" />
-    <Content Include="ICON\add.png" />
-    <Content Include="ICON\application_exit.png" />
-    <Content Include="ICON\application_view_list.png" />
-    <Content Include="ICON\arrow_refresh.png" />
-    <Content Include="ICON\BG_Login.jpg" />
-    <Content Include="ICON\BG_Main.jpg" />
-    <Content Include="ICON\BG_MenuA.png" />
-    <Content Include="ICON\BG_MenuB.png" />
-    <Content Include="ICON\button_cancel.png" />
-    <Content Include="ICON\Chooser.png" />
-    <Content Include="ICON\Close_22.png" />
-    <None Include="ICON\luu_hang_loat_nhieu_anh.png" />
-    <None Include="ICON\Cute-Ball-Go-icon.png" />
-    <Content Include="ICON\DanhMuc_32.png" />
-    <Content Include="ICON\delete.png" />
-    <Content Include="ICON\delete_32.png" />
-    <Content Include="ICON\DoiTac_48.png" />
-    <Content Include="ICON\down.png" />
-    <Content Include="ICON\down_16.png" />
-    <Content Include="ICON\DVT_32.png" />
-    <Content Include="ICON\exit.png" />
-    <Content Include="ICON\HoaDonNhap_32.png" />
-    <Content Include="ICON\HoaDonXuat_32.png" />
-    <Content Include="ICON\HoaDon_32.png" />
-    <Content Include="ICON\Logout_22.png" />
-    <Content Include="ICON\Log_32.png" />
-    <Content Include="ICON\map_edit.png" />
-    <Content Include="ICON\MatKhau.png" />
-    <Content Include="ICON\Medicine_32.png" />
-    <Content Include="ICON\my_documents.png" />
-    <Content Include="ICON\NhaPhanPhoi_32.png" />
-    <Content Include="ICON\NhaSanXuat_32.png" />
-    <Content Include="ICON\NhomThuoc_32.png" />
-    <Content Include="ICON\no.png" />
-    <Content Include="ICON\ok1.png" />
-    <Content Include="ICON\page_copy.png" />
-    <Content Include="ICON\printer.png" />
-    <Content Include="ICON\Save_22.png" />
-    <Content Include="ICON\system_32.png" />
-    <Content Include="ICON\table_save.png" />
-    <Content Include="ICON\Them_22.png" />
-    <Content Include="ICON\TimKiem.png" />
-    <Content Include="ICON\txt.png" />
-    <Content Include="ICON\Users_22.png" />
+    <Content Include="Resources\add-1.png" />
+    <Content Include="Resources\edit.png" />
+    <Content Include="Resources\flag.png" />
+    <Content Include="Resources\refresh.png" />
+    <Content Include="Resources\save.png" />
+    <Content Include="Resources\search.png" />
+    <Content Include="Resources\settings.png" />
+    <Content Include="Resources\stopwatch-1.png" />
+    <Content Include="Resources\trash.png" />
+    <Content Include="Resources\user-4.png" />
+    <Content Include="Resources\user-5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

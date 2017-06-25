@@ -72,7 +72,7 @@ namespace Quiz_Server
                     } while (temp != string.Empty);
                     if (temp.Trim() != "")
                     {
-                        MessageBox.Show("Lỗi cú pháp sau \"" + qMul.content + "\"...");
+                        MessageBox.Show("Syntax error at \"" + qMul.content + "\"...");
                         lstSimple.Clear(); lstMulti.Clear();
                         return;
                     }
@@ -106,14 +106,14 @@ namespace Quiz_Server
                                 qMul.lstQuestion.Add(qItem);
                             else
                             {
-                                MessageBox.Show("Câu \"" + qItem.question + "\" chưa có đáp án đúng");
+                                MessageBox.Show("Question \"" + qItem.question + "\" have no correct answer");
                                 lstSimple.Clear(); lstMulti.Clear();
                                 return;
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Lỗi cú trong câu " + qMul.content + "\"...");
+                            MessageBox.Show("Syntax error at " + qMul.content + "\"...");
                             lstSimple.Clear(); lstMulti.Clear();
                             return;
                         }
@@ -156,7 +156,7 @@ namespace Quiz_Server
                             lstSimple.Add(qItem);
                         else
                         {
-                            MessageBox.Show("Câu \"" + qItem.question + "\" chưa có đáp án đúng");
+                            MessageBox.Show("Question \"" + qItem.question + "\" have no correct answer");
                             lstSimple.Clear(); lstMulti.Clear();
                             return;
                         }
@@ -165,7 +165,7 @@ namespace Quiz_Server
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi cú pháp sau câu " + lstSimple.ElementAt(lstSimple.Count - 1).question);
+                    MessageBox.Show("Syntax error at " + lstSimple.ElementAt(lstSimple.Count - 1).question);
                     lstSimple.Clear(); lstMulti.Clear();
                     return;
                 }
@@ -182,7 +182,7 @@ namespace Quiz_Server
             dgrSimpleQuestion.DataSource = lst;
             dgrSimpleQuestion.Columns[1].Visible = false;
             dgrSimpleQuestion.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgrSimpleQuestion.Columns[0].HeaderText = "Câu hỏi";
+            dgrSimpleQuestion.Columns[0].HeaderText = "Question";
         }
 
         private void BindMultiQuestion(List<MultiQuestion> lst)
@@ -190,15 +190,18 @@ namespace Quiz_Server
             //Bind data to gridview
             dgrMultiQuestion.DataSource = lst;
             dgrMultiQuestion.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgrMultiQuestion.Columns[0].HeaderText = "Câu hỏi";
+            dgrMultiQuestion.Columns[0].HeaderText = "Question";
         }
 
         private void BindCmbSubject()
         {
-            cmbSubject.DataSource = new SubjectBUS().Subject_GetByTop("", "", "");
+
+            List<Subject> lst = new SubjectBUS().Subject_GetByTop("","","");
+            lst.Insert(0, new Subject("0", "Select an option"));
+            cmbSubject.DataSource = lst;
             cmbSubject.DisplayMember = "subjectName";
             cmbSubject.ValueMember = "ID";
-            cmbSubject.SelectedIndex = -1;
+            cmbSubject.SelectedIndex = 0;
 
         }
 
@@ -210,14 +213,14 @@ namespace Quiz_Server
         private void dgView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            string question = "Câu hỏi: ";
+            string question = "Question: ";
             SimpleQuestion sq = lstSimple.ElementAt(e.RowIndex);
             question += sq.question + "\r\n";
             for (int i = 0; i < sq.answer.Count; ++i)
             {
                 question += (char)(65 + i) + ". " + sq.answer.ElementAt(i) + "\r\n";
             }
-            question += "=> Đáp án đúng: " + (char)(65 + sq.correctAnswer) + "\r\n";
+            question += "=> Correct: " + (char)(65 + sq.correctAnswer) + "\r\n";
             txtView.Text = question;
         }
 
@@ -225,7 +228,7 @@ namespace Quiz_Server
         {
             if(cmbSubject.SelectedIndex < 1)
             {
-                MessageBox.Show("Chọn môn học trước khi nhập vào csdl", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Select a subject before import to db", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             } 
             int success = 0, qid = -1, sqid = -1;
@@ -279,12 +282,12 @@ namespace Quiz_Server
                                 }
                             }
                         }
-                        if (count != 0) MessageBox.Show("Lỗi khi thêm vào csdl");
+                        if (count != 0) MessageBox.Show("Error while importing");
                     }
                 }
                 success++;
             }
-            if(MessageBox.Show("Nhập " + success + "/" + (lstSimple.Count + lstMulti.Count) + " bản ghi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+            if(MessageBox.Show("Successful import " + success + "/" + (lstSimple.Count + lstMulti.Count) + " item", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
             {
                 this.Close();
             }
@@ -304,7 +307,7 @@ namespace Quiz_Server
                 {
                     question += (char)(65 + i) + ". " + sq.answer.ElementAt(i) + "\r\n";
                 }
-                question += "=> Đáp án đúng: " + (char)(65 + sq.correctAnswer) + "\r\n\r\n";
+                question += "=> Correct: " + (char)(65 + sq.correctAnswer) + "\r\n\r\n";
             }
             txtView.Text = question;
         }

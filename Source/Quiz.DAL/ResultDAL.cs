@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using Quiz.Entity;
-
+using System;
 
 namespace Quiz.DAL
 {
@@ -33,51 +33,47 @@ namespace Quiz.DAL
             }
             return list;
         }
-        public bool Result_Insert(Result data)
+        public int Result_Insert(Result data)
         {
-            bool check = false;
+            int id = -1;
             try
             {
                 using (SqlCommand dbCmd = new SqlCommand("sp_Result_Insert", openConnection()))
                 {
                     dbCmd.CommandType = CommandType.StoredProcedure;
-                    dbCmd.Parameters.Add(new SqlParameter("@studentID", data.StudentID));
-                    dbCmd.Parameters.Add(new SqlParameter("@quizID", data.QuizID));
+                    dbCmd.Parameters.Add(new SqlParameter("@studentExamID", data.StudentExamID));
                     dbCmd.Parameters.Add(new SqlParameter("@score", data.Score));
-                    dbCmd.Parameters.Add(new SqlParameter("@quizDate", data.QuizDate));
-                    dbCmd.Parameters.Add(new SqlParameter("@flag", data.Flag));
-                    int r = dbCmd.ExecuteNonQuery();
-                    if (r > 0) check = true;
+                    dbCmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    dbCmd.ExecuteNonQuery();
+                    id = int.Parse(dbCmd.Parameters["@id"].Value.ToString());
                 }
             }
             catch
             {
             }
-            return check;
+            return id;
         }
 
-        public bool Result_Update(Result data)
+        public int Result_Update(Result data)
         {
-            bool check = false;
+            int id = -1;
             try
             {
                 using (SqlCommand dbCmd = new SqlCommand("sp_Result_Update", openConnection()))
                 {
                     dbCmd.CommandType = CommandType.StoredProcedure;
                     dbCmd.Parameters.Add(new SqlParameter("@id", data.Id));
-                    dbCmd.Parameters.Add(new SqlParameter("@studentID", data.StudentID));
-                    dbCmd.Parameters.Add(new SqlParameter("@quizID", data.QuizID));
+                    dbCmd.Parameters.Add(new SqlParameter("@studentExamID", data.StudentExamID));
                     dbCmd.Parameters.Add(new SqlParameter("@score", data.Score));
-                    dbCmd.Parameters.Add(new SqlParameter("@quizDate", data.QuizDate));
-                    dbCmd.Parameters.Add(new SqlParameter("@flag", data.Flag));
-                    int r = dbCmd.ExecuteNonQuery();
-                    if (r > 0) check = true;
+                    dbCmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    dbCmd.ExecuteNonQuery();
+                    id = int.Parse(dbCmd.Parameters["@id"].Value.ToString());
                 }
             }
             catch
             {
             }
-            return check;
+            return id;
         }
 
         public bool Result_Delete(string ID)

@@ -24,93 +24,99 @@ namespace Quiz_Server
             BinCmbFaculty("", "", "");
         }
 
-        private void BinData(String t, String w, String o)
+        private void BinData(String t = "", String w = "", String o = "")
         {
-            dgvClass.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClass.AllowUserToAddRows = false;
-            dgvClass.AllowUserToDeleteRows = false;
-            dgvClass.MultiSelect = false;
-            dgvClass.BackgroundColor = Color.White;
-            dgvClass.ReadOnly = true;
+            dgrClass.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgrClass.AllowUserToAddRows = false;
+            dgrClass.AllowUserToDeleteRows = false;
+            dgrClass.MultiSelect = false;
+            dgrClass.BackgroundColor = Color.White;
+            dgrClass.ReadOnly = true;
             List<Class> data = obj.Class_GetByTop(t, w, o);
-            dgvClass.DataSource = data;
-            dgvClass.Columns[0].HeaderText = "Mã lớp";
-            dgvClass.Columns[1].HeaderText = "Tên lớp";
+            dgrClass.DataSource = data;
+            dgrClass.Columns[0].HeaderText = "Class ID";
+            dgrClass.Columns[1].HeaderText = "Class name";
+            dgrClass.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             //Hide column ID. Just use for update, fill, ...
-            dgvClass.Columns[2].HeaderText = "Mã khoa";
-            dgvClass.Columns[2].Visible = false;
+            dgrClass.Columns[2].HeaderText = "Faculty ID";
+            dgrClass.Columns[2].Visible = false;
 
-            dgvClass.Columns[3].HeaderText = "Tên khoa";
-            dgvClass.Columns[3].Width = 150;
+            dgrClass.Columns[3].HeaderText = "Faculty name";
+            dgrClass.Columns[3].Width = 150;
+            dgrClass.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void Clear()
         {
             txtClassID.Text = "";
             txtClassName.Text = "";
-            cmbFacultyID.SelectedIndex = -1;
+            cmbFacultyID.SelectedIndex = 0;
             txtSearch.Text = "";
         }
 
-        private void BinCmbFaculty(String t, String w, String o) {
-            cmbFacultyID.DataSource = new FacultyBUS().Faculty_GetByTop(t,w,o);
+        private void BinCmbFaculty(String t, String w, String o)
+        {
+            List<Quiz.Entity.Faculty> lst = new FacultyBUS().Faculty_GetByTop(t, w, o);
+            lst.Insert(0, new Faculty("0", "-- Select an option --"));
+            cmbFacultyID.DataSource = lst;
             cmbFacultyID.DisplayMember = "facultyName";
             cmbFacultyID.ValueMember = "id";
-            cmbFacultyID.SelectedIndex = -1;
+            cmbFacultyID.SelectedIndex = 0;
         }
 
         private bool ValidField()
         {
             bool check = false;
             if (txtClassName.Text.Equals("")) check = true;
-            if (cmbFacultyID.SelectedIndex < 0) check = true;
+            if (cmbFacultyID.SelectedIndex < 1) check = true;
             return check;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Clear();
-            txtClassName.Select();
+            if (ValidField())
+            {
+                MessageBox.Show("Please fill out all textbox!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            Class Class = new Class(txtClassID.Text, txtClassName.Text, cmbFacultyID.SelectedValue.ToString());
+            if (obj.Class_Insert(Class))
+            {
+                MessageBox.Show("Insert Class successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BinData();
+                Clear();
+            }
+            else
+            {
+                MessageBox.Show("Insert Class unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            try
+            if (ValidField())
             {
-                int row = dgvClass.CurrentRow.Index;
-                txtClassID.Text = dgvClass.Rows[row].Cells[0].Value.ToString();
-                txtClassName.Text = dgvClass.Rows[row].Cells[1].Value.ToString();
-                cmbFacultyID.SelectedValue = dgvClass.Rows[row].Cells[2].Value.ToString();
+                MessageBox.Show("Please fill out all textbox!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-            catch
-            {
-                MessageBox.Show("Select a row first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+            Class Class = new Class(txtClassID.Text, txtClassName.Text, cmbFacultyID.SelectedValue.ToString());
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
+            if (obj.Class_Update(Class))
             {
-                if (MessageBox.Show("Delete this class ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    if (obj.Class_Delete(dgvClass.CurrentRow.Cells[0].Value.ToString()))
-                    {
-                        MessageBox.Show("Delete class successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        BinData("", "", "");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Delete class unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Update Class successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    }
-                }
             }
-            catch
+            else
             {
-                MessageBox.Show("Select a row first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("update Class unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
+
+            BinData("", "", "");
+            Clear();
+            
         }
 
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -129,62 +135,115 @@ namespace Quiz_Server
             }
         }
 
-        private void txtSearch_Leave(object sender, EventArgs e)
-        {
-            Clear();
-            BinData("", "", "");
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (ValidField())
-            {
-                MessageBox.Show("Please fill out all textbox!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            Class Class = new Class(txtClassID.Text,txtClassName.Text,cmbFacultyID.SelectedValue.ToString());
-            if (txtClassID.Text.Equals(""))
-            {
-                if (obj.Class_Insert(Class))
-                {
-                    MessageBox.Show("Insert Class successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Insert Class unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-            }
-            else
-            {
-                if (obj.Class_Update(Class))
-                {
-                    MessageBox.Show("Update Class successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-                else
-                {
-                    MessageBox.Show("update Class unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-            }
-            BinData("", "", "");
-            Clear();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmClass_FormClosed(object sender, FormClosedEventArgs e)
         {
-            new frmMenu().Show();
+            new frmMain().Show();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            BinData();
+        }
+
+        private void btnDeleteMore_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Delete all selected item?", "Notice", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            {
+                int count = 0;
+                foreach (DataGridViewRow r in dgrClass.SelectedRows)
+                {
+                    {
+                        if (obj.Class_Delete(r.Cells["id"].Value.ToString())) { count++; }
+                    }
+                }
+                BinData("", "", "");
+                MessageBox.Show("Successful delete " + count + " item.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void dgrClass_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            try
+            {
+                int row = e.RowIndex;
+                txtClassID.Text = dgrClass.Rows[row].Cells[0].Value.ToString();
+                txtClassName.Text = dgrClass.Rows[row].Cells[1].Value.ToString();
+                cmbFacultyID.SelectedValue = dgrClass.Rows[row].Cells[2].Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Select a row first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new frmMain().Show();
+            this.Hide();
+        }
+
+        private void menuEdit_Click(object sender, EventArgs e)
+        {
+            if (dgrClass.SelectedRows[0].Index < 0) return;
+            try
+            {
+                int row = dgrClass.SelectedRows[0].Index;
+                txtClassID.Text = dgrClass.Rows[row].Cells[0].Value.ToString();
+                txtClassName.Text = dgrClass.Rows[row].Cells[1].Value.ToString();
+                cmbFacultyID.SelectedValue = dgrClass.Rows[row].Cells[2].Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Select a row first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void menuDelete_Click(object sender, EventArgs e)
+        {
+            if (dgrClass.SelectedRows[0].Index < 0) return;
+            if (MessageBox.Show("Delete this teacher ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (obj.Class_Delete(dgrClass.SelectedRows[0].Cells["id"].Value.ToString()))
+                {
+                    MessageBox.Show("Delete teacher successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BinData("", "", "");
+                }
+                else
+                {
+                    MessageBox.Show("Delete teacher unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void dgrClass_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    dgrClass.ClearSelection();
+                    dgrClass.Rows[e.RowIndex].Selected = true;
+                }
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int x = int.Parse(txtSearch.Text);
+                BinData("", " id = '" + x + "' or className like N'%" + x + "%'", "");
+            }
+            catch
+            {
+                BinData("", " className like N'%" + txtSearch.Text + "%'", "");
+            }
         }
     }
 }

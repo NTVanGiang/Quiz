@@ -11,7 +11,7 @@ namespace Quiz.BUS
         {
             return obj.Quiz_GetByTop(Top, Where, Order);
         }
-        public bool Quiz_Insert(Entity.Quiz data)
+        public int Quiz_Insert(Entity.Quiz data)
         {
             return obj.Quiz_Insert(data);
         }

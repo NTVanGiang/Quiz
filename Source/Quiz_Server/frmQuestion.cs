@@ -35,14 +35,14 @@ namespace Quiz_Server
             dgrQuestion.Columns["id"].DisplayIndex = 0;
             dgrQuestion.Columns["id"].HeaderText = "#";
             dgrQuestion.Columns["subjectID"].Visible = false;
-            dgrQuestion.Columns["subjectName"].HeaderText = "Môn học";
+            dgrQuestion.Columns["subjectName"].HeaderText = "Subject";
             dgrQuestion.Columns["subjectName"].DisplayIndex = 1;
             dgrQuestion.Columns["subjectName"].Width = 160;
             dgrQuestion.Columns["content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgrQuestion.Columns["content"].HeaderText = "Câu hỏi";
+            dgrQuestion.Columns["content"].HeaderText = "Question";
             dgrQuestion.Columns["content"].DisplayIndex = 2;
             dgrQuestion.Columns["createDate"].DisplayIndex = 3;
-            dgrQuestion.Columns["createDate"].HeaderText = "Ngày tạo";
+            dgrQuestion.Columns["createDate"].HeaderText = "Creat date";
         }
         private void BindSubQuestionData(string t = "", string w = "", string o = "")
         {
@@ -51,7 +51,7 @@ namespace Quiz_Server
             dgrSubQuestion.Columns["id"].DisplayIndex = 0;
             dgrSubQuestion.Columns["id"].HeaderText = "#";
             dgrSubQuestion.Columns["questionID"].Visible = false;
-            dgrSubQuestion.Columns["content"].HeaderText = "Câu hỏi con";
+            dgrSubQuestion.Columns["content"].HeaderText = "Sub question";
             dgrSubQuestion.Columns["content"].DisplayIndex = 1;
             dgrSubQuestion.Columns["content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgrSubQuestion.Columns["reportCount"].HeaderText = "Report";
@@ -74,10 +74,10 @@ namespace Quiz_Server
             dgrAnswer.Columns["id"].DisplayIndex = 0;
             dgrAnswer.Columns["id"].HeaderText = "#";
             dgrAnswer.Columns["subQuestionID"].Visible = false;
-            dgrAnswer.Columns["answers"].HeaderText = "Câu trả lời";
+            dgrAnswer.Columns["answers"].HeaderText = "Answer";
             dgrAnswer.Columns["answers"].DisplayIndex = 1;
             dgrAnswer.Columns["answers"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgrAnswer.Columns["isCorrect"].HeaderText = "Đáp án";
+            dgrAnswer.Columns["isCorrect"].HeaderText = "Correct";
             dgrAnswer.Columns["isCorrect"].DisplayIndex = 2;
         }
 
@@ -128,7 +128,7 @@ namespace Quiz_Server
             }
             foreach (SubQuestion sq in lstSub)
             {
-                txtView += "Câu hỏi: " + sq.Content + "\r\n";
+                txtView += "Question: " + sq.Content + "\r\n";
                 List<Answer> lst = abus.Answer_GetByTop("", "subQuestionID = '" + sq.Id + "'", "");
                 for (int i = 0; i < lst.Count; i++)
                 {
@@ -169,6 +169,7 @@ namespace Quiz_Server
             {
                 if (e.RowIndex >= 0)
                 {
+                    dgrQuestion.ClearSelection();
                     dgrQuestion.Rows[e.RowIndex].Selected = true;
                 }
             }
@@ -176,16 +177,16 @@ namespace Quiz_Server
 
         private void btnDeleteQuestion_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn muốn xóa bản ghi này?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("Delete this item?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 if (qbus.Question_Delete(dgrQuestion.CurrentRow.Cells["id"].Value.ToString()))
                 {
-                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Delete success", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     BindQuestionData();
                 }
                 else
                 {
-                    MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Delete unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

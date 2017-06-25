@@ -43,7 +43,8 @@ namespace Quiz_Server
                 cmbSubject.SelectedValue = selectedValue;
                 cmbSubject.Enabled = false;
                 txtView.Text = GetContentQuestion();
-                btnUpdate.Text = "Cập nhật";
+                btnUpdate.Text = "Update";
+                btnUpdate.Image = System.Drawing.Image.FromFile("Resources/edit.png");
             }
         }
 
@@ -100,7 +101,7 @@ namespace Quiz_Server
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Đóng cửa sổ và hủy bỏ các thay đổi?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (MessageBox.Show("Close without save?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 this.Close();
             }
@@ -110,7 +111,7 @@ namespace Quiz_Server
         {
             if (cmbSubject.SelectedIndex < 1)
             {
-                MessageBox.Show("Hãy chọn môn học trước", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Select a subject before", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             int qid = 0;
@@ -149,13 +150,13 @@ namespace Quiz_Server
                     }
                     if (count == temp.Length - 1)
                     {
-                        MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Update success", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         qbus.Question_Delete(_qid.ToString());
                     }
 
                     else
                     {
-                        MessageBox.Show("Cập nhật không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Update unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         
                     }
                 }
@@ -189,7 +190,7 @@ namespace Quiz_Server
                                         c++;
                                         if (!abus.Answer_Insert(new Answer(null, sqID.ToString(), a.Substring(0, a.Length - 1).Trim(), "true")))
                                         {
-                                            MessageBox.Show("Cập nhật thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            MessageBox.Show("Update unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                             return;
                                         }
                                     }
@@ -197,30 +198,30 @@ namespace Quiz_Server
                                     {
                                         if (!abus.Answer_Insert(new Answer(null, sqID.ToString(), a, "false")))
                                         {
-                                            MessageBox.Show("Cập nhật thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            MessageBox.Show("Update unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                             return;
                                         }
                                     }
                                 }
                                 if (c == 0)
                                 {
-                                    MessageBox.Show("Cập nhật thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Update unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     return;
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Cập nhật thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Update unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 return;
                             }
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Cập nhật thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Update unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Update success", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     qbus.Question_Delete(_qid.ToString());
                 }
             }
@@ -254,10 +255,10 @@ namespace Quiz_Server
                         }
                     }
                     else { return; }
-                    if (count == temp.Length - 1) MessageBox.Show("Thêm mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (count == temp.Length - 1) MessageBox.Show("Add success", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                     {
-                        MessageBox.Show("Thêm mới không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Add unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (qid > 0) qbus.Question_Delete(qid.ToString());
                     }
                 }
@@ -291,7 +292,7 @@ namespace Quiz_Server
                                         c++;
                                         if (!abus.Answer_Insert(new Answer(null, sqID.ToString(), a.Substring(0, a.Length - 1).Trim(), "true")))
                                         {
-                                            MessageBox.Show("Thêm mới thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            MessageBox.Show("Add unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                             qbus.Question_Delete(qid.ToString());
                                             return;
                                         }
@@ -300,7 +301,7 @@ namespace Quiz_Server
                                     {
                                         if (!abus.Answer_Insert(new Answer(null, sqID.ToString(), a, "false")))
                                         {
-                                            MessageBox.Show("Thêm mới thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            MessageBox.Show("Add unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                             qbus.Question_Delete(qid.ToString());
                                             return;
                                         }
@@ -308,14 +309,14 @@ namespace Quiz_Server
                                 }
                                 if (c == 0)
                                 {
-                                    MessageBox.Show("Thêm mới thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Add unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     qbus.Question_Delete(qid.ToString());
                                     return;
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Thêm mới thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Add unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 qbus.Question_Delete(qid.ToString());
                                 return;
                             }
@@ -323,11 +324,11 @@ namespace Quiz_Server
                     }
                     else
                     {
-                        MessageBox.Show("Thêm mới thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Add unsuccess", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         qbus.Question_Delete(qid.ToString());
                         return;
                     }
-                    MessageBox.Show("Thêm mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Add success", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
@@ -339,7 +340,7 @@ namespace Quiz_Server
             string[] temp = Regex.Split(s, "\r\n");
             if (temp.Length < 3)
             {
-                MessageBox.Show("Số đáp án cần nhiều hơn 1", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Num of answer must be more than 1", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             int c = 0;
@@ -350,12 +351,12 @@ namespace Quiz_Server
             }
             if (c == temp.Length - 1)
             {
-                MessageBox.Show("Cần ít nhất một đáp án sai", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Need at least 1 uncorrect answer", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (c == 0)
             {
-                MessageBox.Show("Cần ít nhất một đáp án đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Need at least 1 correct answer", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

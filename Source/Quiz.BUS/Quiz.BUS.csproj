@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExamBUS.cs" />
+    <Compile Include="ResultDetailBUS.cs" />
+    <Compile Include="StudentExamBUS.cs" />
     <Compile Include="SubQuestionBUS.cs" />
     <Compile Include="TeacherBUS.cs" />
     <Compile Include="SubjectBUS.cs" />

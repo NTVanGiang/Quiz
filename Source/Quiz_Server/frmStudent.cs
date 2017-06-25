@@ -19,119 +19,109 @@ namespace Quiz_Server
         {
             InitializeComponent();
         }
-        private void BinData(String t, String w, String o)
+        private void BindData(String t = "", String w = "", String o = "")
         {
-            dgvStudent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvStudent.AllowUserToAddRows = false;
-            dgvStudent.AllowUserToDeleteRows = false;
-            dgvStudent.MultiSelect = false;
-            dgvStudent.BackgroundColor = Color.White;
-            dgvStudent.ReadOnly = true;
+            dgrStudent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgrStudent.AllowUserToAddRows = false;
+            dgrStudent.AllowUserToDeleteRows = false;
+            dgrStudent.MultiSelect = false;
+            dgrStudent.BackgroundColor = Color.White;
+            dgrStudent.ReadOnly = true;
             List<Student> data = obj.Student_GetByTop(t, w, o);
-            dgvStudent.DataSource = data;
-            dgvStudent.Columns[0].HeaderText = "Mã học viên";
-            dgvStudent.Columns[0].Width = 120;
-            dgvStudent.Columns[1].HeaderText = "Họ tên";
-            dgvStudent.Columns[1].Width = 180;
-            dgvStudent.Columns[2].HeaderText = "Tài khoản";
-            dgvStudent.Columns[3].Visible = false;
-            dgvStudent.Columns[4].HeaderText = "Mã lớp";
-            dgvStudent.Columns[4].Visible = false;
-            dgvStudent.Columns[5].HeaderText = "Status";
-            dgvStudent.Columns[6].HeaderText = "Tên lớp";
+            dgrStudent.DataSource = data;
+            dgrStudent.Columns[0].HeaderText = "Student ID";
+            dgrStudent.Columns[0].Width = 120;
+            dgrStudent.Columns[1].HeaderText = "Student name";
+            dgrStudent.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgrStudent.Columns[2].HeaderText = "Username";
+            dgrStudent.Columns[3].Visible = false;
+            dgrStudent.Columns[4].HeaderText = "Class ID";
+            dgrStudent.Columns[4].Visible = false;
+            dgrStudent.Columns[5].HeaderText = "Status";
+            dgrStudent.Columns[6].HeaderText = "Class name";
+            dgrStudent.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
         private void BinCmbClass(String t, String w, String o)
         {
-            cmbClassID.DataSource = new ClassBUS().Class_GetByTop(t, w, o);
+            List<Class> lst = new ClassBUS().Class_GetByTop(t, w, o);
+            lst.Insert(0, new Quiz.Entity.Class("0", "Select an option", ""));
+            cmbClassID.DataSource = lst;
             cmbClassID.DisplayMember = "className";
             cmbClassID.ValueMember = "id";
-            cmbClassID.SelectedIndex = -1;
+            cmbClassID.SelectedIndex = 0;
         }
         private void Clear()
         {
             txtSearch.Text = "";
             txtStudentID.Text = "";
             txtFullName.Text = "";
-            txtUserName.Text = "";
-            txtPassWord.Text = "";
-            txtStatus.Text = "";
-            cmbClassID.SelectedIndex = -1;
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+            rdActive.Checked = true;
+            cmbClassID.SelectedIndex = 0;
         }
         private bool ValidField()
         {
             bool check = false;
             if (txtFullName.Text.Equals("")) check = true;
-            if (txtUserName.Text.Equals("")) check = true;
-            if (txtPassWord.Text.Equals("")) check = true;
-            if (cmbClassID.SelectedIndex < 0) check = true;
+            if (txtUsername.Text.Equals("")) check = true;
+            if (txtPassword.Text.Equals("")) check = true;
+            if (cmbClassID.SelectedIndex < 1) check = true;
             return check;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        {
-            Clear();
-            txtFullName.Select();
-        }
-
-        private void frmStudent_Load(object sender, EventArgs e)
-        {
-            BinData("", "", "");
-            BinCmbClass("", "", "");
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidField())
             {
                 MessageBox.Show("Please fill out all textbox!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            Student Student = new Student(txtStudentID.Text, txtFullName.Text,txtUserName.Text,txtPassWord.Text, cmbClassID.SelectedValue.ToString(), txtStatus.Text);
-            if (txtStudentID.Text.Equals(""))
+            Student Student = new Student(txtStudentID.Text, txtFullName.Text, txtUsername.Text, txtPassword.Text, cmbClassID.SelectedValue.ToString(), (rdActive.Checked ? "True" : "False"));
+            if (obj.Student_Insert(Student))
             {
-                if (obj.Student_Insert(Student))
-                {
-                    MessageBox.Show("Insert Student successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Insert Student unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
+                MessageBox.Show("Insert Student successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                if (obj.Student_Update(Student))
-                {
-                    MessageBox.Show("Update Student successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Insert Student unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                }
-                else
-                {
-                    MessageBox.Show("update Student unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
             }
-            BinData("", "", "");
+            BindData("", "", "");
             Clear();
+        }
+
+        private void frmStudent_Load(object sender, EventArgs e)
+        {
+            BindData("", "", "");
+            BinCmbClass("", "", "");
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            try
+            if (ValidField())
             {
-                int row = dgvStudent.CurrentRow.Index;
-                txtStudentID.Text = dgvStudent.Rows[row].Cells[0].Value.ToString();
-                txtFullName.Text = dgvStudent.Rows[row].Cells[1].Value.ToString();
-                txtUserName.Text = dgvStudent.Rows[row].Cells[2].Value.ToString();
-                txtPassWord.Text = dgvStudent.Rows[row].Cells[3].Value.ToString();
-                cmbClassID.SelectedValue = dgvStudent.Rows[row].Cells[4].Value.ToString();
-                txtStatus.Text = dgvStudent.Rows[row].Cells[5].Value.ToString();
+                MessageBox.Show("Please fill out all textbox!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-            catch
+            Student Student = new Student(txtStudentID.Text, txtFullName.Text, txtUsername.Text, txtPassword.Text, cmbClassID.SelectedValue.ToString(), (rdActive.Checked ? "True" : "False"));
+            if (obj.Student_Update(Student))
             {
-                MessageBox.Show("Select a row first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Update Student successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
+            else
+            {
+                MessageBox.Show("update Student unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            BindData("", "", "");
+            Clear();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -140,10 +130,10 @@ namespace Quiz_Server
             {
                 if (MessageBox.Show("Delete this student ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (obj.Student_Delete(dgvStudent.CurrentRow.Cells[0].Value.ToString()))
+                    if (obj.Student_Delete(dgrStudent.CurrentRow.Cells[0].Value.ToString()))
                     {
                         MessageBox.Show("Delete student successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        BinData("", "", "");
+                        BindData("", "", "");
                     }
                     else
                     {
@@ -160,30 +150,146 @@ namespace Quiz_Server
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if(rbUserName.Checked)
+            try
             {
-                BinData("", " username like N'%" + txtSearch.Text + "%'", "");
+                int x = int.Parse(txtSearch.Text);
+                BindData("", " id = '" + x + "' or fullname like N'%" + x + "%'", "");
             }
-            if(rbClass.Checked)
+            catch
             {
-                List<Student> data = obj.Search_ClassName(txtSearch.Text);
-                dgvStudent.DataSource = data;
-                dgvStudent.Columns[0].HeaderText = "Mã học viên";
-                dgvStudent.Columns[0].Width = 120;
-                dgvStudent.Columns[1].HeaderText = "Họ tên";
-                dgvStudent.Columns[1].Width = 180;
-                dgvStudent.Columns[2].HeaderText = "Tài khoản";
-                dgvStudent.Columns[3].Visible = false;
-                dgvStudent.Columns[4].HeaderText = "Mã lớp";
-                dgvStudent.Columns[4].Visible = false;
-                dgvStudent.Columns[5].HeaderText = "Status";
+                BindData("", " fullname like N'%" + txtSearch.Text + "%'", "");
             }
         }
 
         private void txtSearch_Leave(object sender, EventArgs e)
         {
             Clear();
-            BinData("", "", "");
+            BindData("", "", "");
+        }
+
+        private void dgrStudent_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            try
+            {
+                int row = dgrStudent.CurrentRow.Index;
+                txtStudentID.Text = dgrStudent.Rows[row].Cells[0].Value.ToString();
+                txtFullName.Text = dgrStudent.Rows[row].Cells[1].Value.ToString();
+                txtUsername.Text = dgrStudent.Rows[row].Cells[2].Value.ToString();
+                txtPassword.Text = dgrStudent.Rows[row].Cells[3].Value.ToString();
+                cmbClassID.SelectedValue = dgrStudent.Rows[row].Cells[4].Value.ToString();
+                if (dgrStudent.Rows[row].Cells[5].Value.ToString().ToLower() == "true")
+                    rdActive.Checked = true;
+                else rdBlock.Checked = true;
+            }
+            catch
+            {
+                MessageBox.Show("Select a row first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void dgrStudent_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    dgrStudent.ClearSelection();
+                    dgrStudent.Rows[e.RowIndex].Selected = true;
+                }
+            }
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           if(e.KeyChar == 13)
+            {
+                try
+                {
+                    int x = int.Parse(txtSearch.Text);
+                    BindData("", " id = '" + x + "' or fullname like N'%" + x + "%'", "");
+                }
+                catch
+                {
+                    BindData("", " fullname like N'%" + txtSearch.Text + "%'", "");
+                }
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            BindData();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new frmMain().Show();
+            this.Hide();
+        }
+
+        private void btnDeleteMore_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Delete all selected item?", "Notice", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            {
+                int count = 0;
+                foreach (DataGridViewRow r in dgrStudent.SelectedRows)
+                {
+                    {
+                        if (obj.Student_Delete(r.Cells["id"].Value.ToString())) { count++; }
+                    }
+                }
+                BindData("", "", "");
+                MessageBox.Show("Successful delete " + count + " item.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void menuEdit_Click(object sender, EventArgs e)
+        {
+            if (dgrStudent.SelectedRows[0].Index < 0) return;
+            try
+            {
+                int row = dgrStudent.SelectedRows[0].Index;
+                txtStudentID.Text = dgrStudent.Rows[row].Cells[0].Value.ToString();
+                txtFullName.Text = dgrStudent.Rows[row].Cells[1].Value.ToString();
+                txtUsername.Text = dgrStudent.Rows[row].Cells[2].Value.ToString();
+                txtPassword.Text = dgrStudent.Rows[row].Cells[3].Value.ToString();
+                cmbClassID.SelectedValue = dgrStudent.Rows[row].Cells[4].Value.ToString();
+                if (dgrStudent.Rows[row].Cells[5].Value.ToString().ToLower() == "true")
+                    rdActive.Checked = true;
+                else rdBlock.Checked = true;
+            }
+            catch
+            {
+                MessageBox.Show("Select a row first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void menuDelete_Click(object sender, EventArgs e)
+        {
+            if (dgrStudent.SelectedRows[0].Index < 0) return;
+            if (MessageBox.Show("Delete this student ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (obj.Student_Delete(dgrStudent.SelectedRows[0].Cells["id"].Value.ToString()))
+                {
+                    MessageBox.Show("Delete student successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BindData("", "", "");
+                }
+                else
+                {
+                    MessageBox.Show("Delete student unsuccessed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void checkBoxX1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxX1.Checked) txtPassword.UseSystemPasswordChar = false;
+            else txtPassword.UseSystemPasswordChar = true;
         }
     }
 }

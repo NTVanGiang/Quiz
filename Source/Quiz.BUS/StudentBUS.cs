@@ -12,10 +12,10 @@ namespace Quiz.BUS
         {
             return obj.Student_GetByTop(Top, Where, Order);
         }
-        public List<Student> Search_ClassName(string search)
-        {
-            return obj.Search_ClassName(search);
-        }
+        //public List<Student> Search_ClassName(string search)
+        //{
+        //    return obj.Search_ClassName(search);
+        //}
         public bool Student_Insert(Student data)
         {
             return obj.Student_Insert(data);

@@ -31,9 +31,9 @@ namespace Quiz.DAL
             }
             return list;
         }
-        public bool Quiz_Insert(Quiz.Entity.Quiz data)
+        public int Quiz_Insert(Quiz.Entity.Quiz data)
         {
-            bool check = false;
+            int id = -1;
             try
             {
                 using (SqlCommand dbCmd = new SqlCommand("sp_Quiz_Insert", openConnection()))
@@ -41,19 +41,19 @@ namespace Quiz.DAL
                     dbCmd.CommandType = CommandType.StoredProcedure;
                     dbCmd.Parameters.Add(new SqlParameter("@subjectID", data.SubjectID));
                     dbCmd.Parameters.Add(new SqlParameter("@quizName", data.QuizName));
-                    dbCmd.Parameters.Add(new SqlParameter("@questionCount", data.QuestionCount));
-                    dbCmd.Parameters.Add(new SqlParameter("@timeStart", data.TimeStart));
+                    dbCmd.Parameters.Add(new SqlParameter("@qCountSingle", data.QCountSingle));
+                    dbCmd.Parameters.Add(new SqlParameter("@qCountMultiple", data.QCountMultiple));
                     dbCmd.Parameters.Add(new SqlParameter("@time", data.Time));
-                    dbCmd.Parameters.Add(new SqlParameter("@questionList", data.QuestionList));
                     dbCmd.Parameters.Add(new SqlParameter("@teacherID", data.TeacherID));
-                    int r = dbCmd.ExecuteNonQuery();
-                    if (r > 0) check = true;
+                    dbCmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    dbCmd.ExecuteNonQuery();
+                    id = int.Parse(dbCmd.Parameters["@id"].Value.ToString());
                 }
             }
             catch
             {
             }
-            return check;
+            return id;
         }
 
         public bool Quiz_Update(Quiz.Entity.Quiz data)
@@ -67,10 +67,9 @@ namespace Quiz.DAL
                     dbCmd.Parameters.Add(new SqlParameter("@id", data.Id));
                     dbCmd.Parameters.Add(new SqlParameter("@subjectID", data.SubjectID));
                     dbCmd.Parameters.Add(new SqlParameter("@quizName", data.QuizName));
-                    dbCmd.Parameters.Add(new SqlParameter("@questionCount", data.QuestionCount));
-                    dbCmd.Parameters.Add(new SqlParameter("@timeStart", data.TimeStart));
+                    dbCmd.Parameters.Add(new SqlParameter("@qCountSingle", data.QCountSingle));
+                    dbCmd.Parameters.Add(new SqlParameter("@qCountMultiple", data.QCountMultiple));
                     dbCmd.Parameters.Add(new SqlParameter("@time", data.Time));
-                    dbCmd.Parameters.Add(new SqlParameter("@questionList", data.QuestionList));
                     dbCmd.Parameters.Add(new SqlParameter("@teacherID", data.TeacherID));
                     int r = dbCmd.ExecuteNonQuery();
                     if (r > 0) check = true;

@@ -248,6 +248,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmImport";
             this.Text = "EPU Contest System - Data Importer Tool";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmImport_FormClosed);
             this.Load += new System.EventHandler(this.frmImport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgrSimpleQuestion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgrMultiQuestion)).EndInit();

@@ -235,5 +235,10 @@ namespace Quiz_Server
                 }
             }
         }
+
+        private void frmFaculty_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            new frmMain().Show();
+        }
     }
 }

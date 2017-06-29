@@ -54,9 +54,8 @@ namespace Quiz.DAL
             return id;
         }
 
-        public int Result_Update(Result data)
+        public bool Result_Update(Result data)
         {
-            int id = -1;
             try
             {
                 using (SqlCommand dbCmd = new SqlCommand("sp_Result_Update", openConnection()))
@@ -65,15 +64,14 @@ namespace Quiz.DAL
                     dbCmd.Parameters.Add(new SqlParameter("@id", data.Id));
                     dbCmd.Parameters.Add(new SqlParameter("@studentExamID", data.StudentExamID));
                     dbCmd.Parameters.Add(new SqlParameter("@score", data.Score));
-                    dbCmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    dbCmd.ExecuteNonQuery();
-                    id = int.Parse(dbCmd.Parameters["@id"].Value.ToString());
+                    int r = dbCmd.ExecuteNonQuery();
+                    return r > 0;
                 }
             }
             catch
             {
             }
-            return id;
+            return false;
         }
 
         public bool Result_Delete(string ID)

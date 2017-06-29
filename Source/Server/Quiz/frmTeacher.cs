@@ -263,6 +263,11 @@ namespace Quiz_Server
             if (ckViewPassword.Checked == true) txtPassword.UseSystemPasswordChar = false;
             else txtPassword.UseSystemPasswordChar = true;
         }
+
+        private void frmTeacher_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            new frmMain().Show();
+        }
     }
 }
 

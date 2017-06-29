@@ -14,6 +14,7 @@ namespace Quiz.Objects
         public string studentAnswerID { get; set; }
         public bool IsCorrect()
         {
+            if (studentAnswerID == null) return false;
             AnswerBUS obj = new AnswerBUS();
             try
             {

@@ -17,7 +17,7 @@ namespace Quiz.BUS
             return obj.Result_Insert(data);
         }
 
-        public int Result_Update(Result data)
+        public bool Result_Update(Result data)
         {
             return obj.Result_Update(data);
         }

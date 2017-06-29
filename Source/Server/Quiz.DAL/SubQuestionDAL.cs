@@ -68,6 +68,7 @@ namespace Quiz.DAL
                     dbCmd.Parameters.Add(new SqlParameter("@questionID", data.QuestionId));
                     dbCmd.Parameters.Add(new SqlParameter("@content", data.Content));
                     dbCmd.Parameters.Add(new SqlParameter("@active", data.Active));
+                    dbCmd.Parameters.Add(new SqlParameter("@reportCount", data.ReportCount));
                     int r = dbCmd.ExecuteNonQuery();
                     if (r > 0) check = true;
                 }

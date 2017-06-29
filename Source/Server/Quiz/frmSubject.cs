@@ -212,5 +212,10 @@ namespace Quiz_Server
                 MessageBox.Show("Successful delete " + count + " item.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void frmSubject_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            new frmMain().Show();
+        }
     }
 }

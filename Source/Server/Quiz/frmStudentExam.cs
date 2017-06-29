@@ -127,7 +127,7 @@ namespace Quiz_Server
         {
             if (obj.StudentExam_GetByTop("", "isActive = 'false'", "").Count > 0)
             {
-                MessageBox.Show("One more quiz is current in db. Can't create new one", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("One more quiz is unactive current in db. Can't create new one", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (cmbQuizID.SelectedIndex <= 0 || cmbClassID.SelectedIndex <= 0)
@@ -203,6 +203,11 @@ namespace Quiz_Server
                 }
                 BindGrid("", "", "");
             }
+        }
+
+        private void frmStudentExam_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            new frmMain().Show();
         }
     }
 }

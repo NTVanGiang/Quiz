@@ -35,7 +35,7 @@ namespace Quiz
                 questionList = ex.QuestionList;
                 Quiz.Entity.Quiz q = new QuizBUS().Quiz_GetByTop("", "id = '" + ex.QuizID + "'", "").ElementAt(0);
                 lbQuizName.Text += q.QuizName;
-                lbTime.Text += q.Time + "minutes";
+                lbTime.Text += q.Time + " minutes";
                 time = int.Parse(q.Time)*60;
                 lbSubject.Text += q.SubJectName;
                 lbQuestionCount.Text += int.Parse(q.QCountSingle) + int.Parse(q.QCountMultiple) + " questions";
@@ -68,7 +68,7 @@ namespace Quiz
             if (new StudentExamBUS().StudentExam_Update(studentExam))
             {
                 this.Hide();
-                new frmQuiz(user, questionList, time).Show();
+                new frmQuiz(studentExam.Id, user, questionList, time).Show();
             }
         }
 
@@ -81,6 +81,11 @@ namespace Quiz
         private void ckAgree_CheckedChanged(object sender, EventArgs e)
         {
             if (ckAgree.Checked) ckAgree.BackColor = Color.Transparent;
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

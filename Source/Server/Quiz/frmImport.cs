@@ -316,5 +316,9 @@ namespace Quiz_Server
         {
             this.Close();
         }
+
+        private void frmImport_FormClosed(object sender, FormClosedEventArgs e)
+        {
+        }
     }
 }

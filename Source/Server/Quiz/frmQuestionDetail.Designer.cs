@@ -33,14 +33,14 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtView = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnGuide = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
+            this.cmbSubject = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdMulti = new System.Windows.Forms.RadioButton();
             this.rdSingle = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbSubject = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
-            this.btnGuide = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -89,6 +89,60 @@
             this.panel2.Size = new System.Drawing.Size(863, 83);
             this.panel2.TabIndex = 0;
             // 
+            // btnGuide
+            // 
+            this.btnGuide.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnGuide.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnGuide.Image = ((System.Drawing.Image)(resources.GetObject("btnGuide.Image")));
+            this.btnGuide.ImageFixedSize = new System.Drawing.Size(24, 24);
+            this.btnGuide.Location = new System.Drawing.Point(528, 22);
+            this.btnGuide.Name = "btnGuide";
+            this.btnGuide.Size = new System.Drawing.Size(90, 50);
+            this.btnGuide.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnGuide.TabIndex = 1;
+            this.btnGuide.Text = "Guide";
+            this.btnGuide.Click += new System.EventHandler(this.btnGuide_Click);
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
+            this.buttonX1.ImageFixedSize = new System.Drawing.Size(24, 24);
+            this.buttonX1.Location = new System.Drawing.Point(745, 22);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(90, 50);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.TabIndex = 1;
+            this.buttonX1.Text = "Cancel";
+            this.buttonX1.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.ImageFixedSize = new System.Drawing.Size(24, 24);
+            this.btnUpdate.Location = new System.Drawing.Point(639, 22);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(90, 50);
+            this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Text = "Add new";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // cmbSubject
+            // 
+            this.cmbSubject.DisplayMember = "Text";
+            this.cmbSubject.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbSubject.FormattingEnabled = true;
+            this.cmbSubject.ItemHeight = 21;
+            this.cmbSubject.Location = new System.Drawing.Point(286, 37);
+            this.cmbSubject.Name = "cmbSubject";
+            this.cmbSubject.Size = new System.Drawing.Size(216, 27);
+            this.cmbSubject.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbSubject.TabIndex = 7;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rdMulti);
@@ -131,60 +185,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Select a subject";
             // 
-            // cmbSubject
-            // 
-            this.cmbSubject.DisplayMember = "Text";
-            this.cmbSubject.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbSubject.FormattingEnabled = true;
-            this.cmbSubject.ItemHeight = 21;
-            this.cmbSubject.Location = new System.Drawing.Point(286, 37);
-            this.cmbSubject.Name = "cmbSubject";
-            this.cmbSubject.Size = new System.Drawing.Size(216, 27);
-            this.cmbSubject.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbSubject.TabIndex = 7;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.ImageFixedSize = new System.Drawing.Size(24, 24);
-            this.btnUpdate.Location = new System.Drawing.Point(639, 22);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(90, 50);
-            this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnUpdate.TabIndex = 1;
-            this.btnUpdate.Text = "Add new";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnGuide
-            // 
-            this.btnGuide.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnGuide.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnGuide.Image = ((System.Drawing.Image)(resources.GetObject("btnGuide.Image")));
-            this.btnGuide.ImageFixedSize = new System.Drawing.Size(24, 24);
-            this.btnGuide.Location = new System.Drawing.Point(528, 22);
-            this.btnGuide.Name = "btnGuide";
-            this.btnGuide.Size = new System.Drawing.Size(90, 50);
-            this.btnGuide.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnGuide.TabIndex = 1;
-            this.btnGuide.Text = "Guide";
-            this.btnGuide.Click += new System.EventHandler(this.btnGuide_Click);
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
-            this.buttonX1.ImageFixedSize = new System.Drawing.Size(24, 24);
-            this.buttonX1.Location = new System.Drawing.Point(745, 22);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(90, 50);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 1;
-            this.buttonX1.Text = "Cancel";
-            this.buttonX1.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // frmQuestionDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,6 +194,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmQuestionDetail";
             this.Text = "EPU Contest System - Question Add";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmQuestionDetail_FormClosed);
             this.Load += new System.EventHandler(this.frmQuestionDetail_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

@@ -36,15 +36,16 @@
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.panelDockContainer1 = new DevComponents.DotNetBar.PanelDockContainer();
             this.explorerBar1 = new DevComponents.DotNetBar.ExplorerBar();
-            this.explorerBarGroupItem1 = new DevComponents.DotNetBar.ExplorerBarGroupItem();
+            this.ex1 = new DevComponents.DotNetBar.ExplorerBarGroupItem();
             this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
             this.lbStudentID = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
             this.lbStudentName = new DevComponents.DotNetBar.ButtonItem();
             this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
             this.lbClassName = new DevComponents.DotNetBar.ButtonItem();
-            this.exNotification = new DevComponents.DotNetBar.ExplorerBarGroupItem();
+            this.ex2 = new DevComponents.DotNetBar.ExplorerBarGroupItem();
             this.labelItem4 = new DevComponents.DotNetBar.LabelItem();
+            this.lbNotification = new DevComponents.DotNetBar.ButtonItem();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.fpnQuestionButton = new System.Windows.Forms.FlowLayoutPanel();
             this.llbFinnish = new System.Windows.Forms.LinkLabel();
@@ -59,9 +60,8 @@
             this.dockSite7 = new DevComponents.DotNetBar.DockSite();
             this.dockSite3 = new DevComponents.DotNetBar.DockSite();
             this.grViewQuestion = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.tmCountDown = new System.Windows.Forms.Timer(this.components);
             this.fpnQuestionView = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbNotification = new DevComponents.DotNetBar.ButtonItem();
+            this.tmCountDown = new System.Windows.Forms.Timer(this.components);
             this.dockSite1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.bar1.SuspendLayout();
@@ -170,8 +170,8 @@
             this.explorerBar1.Cursor = System.Windows.Forms.Cursors.Default;
             this.explorerBar1.GroupImages = null;
             this.explorerBar1.Groups.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.explorerBarGroupItem1,
-            this.exNotification});
+            this.ex1,
+            this.ex2});
             this.explorerBar1.Images = null;
             this.explorerBar1.Location = new System.Drawing.Point(10, 270);
             this.explorerBar1.Name = "explorerBar1";
@@ -180,52 +180,52 @@
             this.explorerBar1.TabIndex = 1;
             this.explorerBar1.Text = "explorerBar1";
             // 
-            // explorerBarGroupItem1
+            // ex1
             // 
             // 
             // 
             // 
-            this.explorerBarGroupItem1.BackStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(223)))), ((int)(((byte)(247)))));
-            this.explorerBarGroupItem1.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.explorerBarGroupItem1.BackStyle.BorderBottomWidth = 1;
-            this.explorerBarGroupItem1.BackStyle.BorderColor = System.Drawing.Color.White;
-            this.explorerBarGroupItem1.BackStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.explorerBarGroupItem1.BackStyle.BorderLeftWidth = 1;
-            this.explorerBarGroupItem1.BackStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.explorerBarGroupItem1.BackStyle.BorderRightWidth = 1;
-            this.explorerBarGroupItem1.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.explorerBarGroupItem1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.explorerBarGroupItem1.Expanded = true;
-            this.explorerBarGroupItem1.Name = "explorerBarGroupItem1";
-            this.explorerBarGroupItem1.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors;
-            this.explorerBarGroupItem1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.ex1.BackStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(223)))), ((int)(((byte)(247)))));
+            this.ex1.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ex1.BackStyle.BorderBottomWidth = 1;
+            this.ex1.BackStyle.BorderColor = System.Drawing.Color.White;
+            this.ex1.BackStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ex1.BackStyle.BorderLeftWidth = 1;
+            this.ex1.BackStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ex1.BackStyle.BorderRightWidth = 1;
+            this.ex1.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ex1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ex1.Expanded = true;
+            this.ex1.Name = "ex1";
+            this.ex1.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors;
+            this.ex1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.labelItem1,
             this.lbStudentID,
             this.labelItem2,
             this.lbStudentName,
             this.labelItem3,
             this.lbClassName});
-            this.explorerBarGroupItem1.Text = "Student Info";
+            this.ex1.Text = "Student Info";
             // 
             // 
             // 
-            this.explorerBarGroupItem1.TitleHotStyle.BackColor = System.Drawing.Color.White;
-            this.explorerBarGroupItem1.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(211)))), ((int)(((byte)(247)))));
-            this.explorerBarGroupItem1.TitleHotStyle.CornerDiameter = 3;
-            this.explorerBarGroupItem1.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.explorerBarGroupItem1.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.explorerBarGroupItem1.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.explorerBarGroupItem1.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
+            this.ex1.TitleHotStyle.BackColor = System.Drawing.Color.White;
+            this.ex1.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(211)))), ((int)(((byte)(247)))));
+            this.ex1.TitleHotStyle.CornerDiameter = 3;
+            this.ex1.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ex1.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.ex1.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.ex1.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
             // 
             // 
             // 
-            this.explorerBarGroupItem1.TitleStyle.BackColor = System.Drawing.Color.White;
-            this.explorerBarGroupItem1.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(211)))), ((int)(((byte)(247)))));
-            this.explorerBarGroupItem1.TitleStyle.CornerDiameter = 3;
-            this.explorerBarGroupItem1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.explorerBarGroupItem1.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.explorerBarGroupItem1.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.explorerBarGroupItem1.TitleStyle.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
+            this.ex1.TitleStyle.BackColor = System.Drawing.Color.White;
+            this.ex1.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(211)))), ((int)(((byte)(247)))));
+            this.ex1.TitleStyle.CornerDiameter = 3;
+            this.ex1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ex1.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.ex1.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.ex1.TitleStyle.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
             // 
             // labelItem1
             // 
@@ -275,53 +275,64 @@
             this.lbClassName.Name = "lbClassName";
             this.lbClassName.Text = ">> ";
             // 
-            // exNotification
+            // ex2
             // 
             // 
             // 
             // 
-            this.exNotification.BackStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(223)))), ((int)(((byte)(247)))));
-            this.exNotification.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.exNotification.BackStyle.BorderBottomWidth = 1;
-            this.exNotification.BackStyle.BorderColor = System.Drawing.Color.White;
-            this.exNotification.BackStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.exNotification.BackStyle.BorderLeftWidth = 1;
-            this.exNotification.BackStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.exNotification.BackStyle.BorderRightWidth = 1;
-            this.exNotification.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.exNotification.Cursor = System.Windows.Forms.Cursors.Default;
-            this.exNotification.Expanded = true;
-            this.exNotification.Name = "exNotification";
-            this.exNotification.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors;
-            this.exNotification.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.ex2.BackStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(223)))), ((int)(((byte)(247)))));
+            this.ex2.BackStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ex2.BackStyle.BorderBottomWidth = 1;
+            this.ex2.BackStyle.BorderColor = System.Drawing.Color.White;
+            this.ex2.BackStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ex2.BackStyle.BorderLeftWidth = 1;
+            this.ex2.BackStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.ex2.BackStyle.BorderRightWidth = 1;
+            this.ex2.BackStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ex2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ex2.Expanded = true;
+            this.ex2.Name = "ex2";
+            this.ex2.StockStyle = DevComponents.DotNetBar.eExplorerBarStockStyle.SystemColors;
+            this.ex2.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.labelItem4,
             this.lbNotification});
-            this.exNotification.Text = "Notification";
+            this.ex2.Text = "Notification";
             // 
             // 
             // 
-            this.exNotification.TitleHotStyle.BackColor = System.Drawing.Color.White;
-            this.exNotification.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(211)))), ((int)(((byte)(247)))));
-            this.exNotification.TitleHotStyle.CornerDiameter = 3;
-            this.exNotification.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.exNotification.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.exNotification.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.exNotification.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
+            this.ex2.TitleHotStyle.BackColor = System.Drawing.Color.White;
+            this.ex2.TitleHotStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(211)))), ((int)(((byte)(247)))));
+            this.ex2.TitleHotStyle.CornerDiameter = 3;
+            this.ex2.TitleHotStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ex2.TitleHotStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.ex2.TitleHotStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.ex2.TitleHotStyle.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
             // 
             // 
             // 
-            this.exNotification.TitleStyle.BackColor = System.Drawing.Color.White;
-            this.exNotification.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(211)))), ((int)(((byte)(247)))));
-            this.exNotification.TitleStyle.CornerDiameter = 3;
-            this.exNotification.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.exNotification.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.exNotification.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.exNotification.TitleStyle.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
+            this.ex2.TitleStyle.BackColor = System.Drawing.Color.White;
+            this.ex2.TitleStyle.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(211)))), ((int)(((byte)(247)))));
+            this.ex2.TitleStyle.CornerDiameter = 3;
+            this.ex2.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ex2.TitleStyle.CornerTypeTopLeft = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.ex2.TitleStyle.CornerTypeTopRight = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.ex2.TitleStyle.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
             // 
             // labelItem4
             // 
             this.labelItem4.Name = "labelItem4";
             this.labelItem4.Text = "Recent:";
+            // 
+            // lbNotification
+            // 
+            this.lbNotification.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.lbNotification.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbNotification.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
+            this.lbNotification.HotFontUnderline = true;
+            this.lbNotification.HotForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
+            this.lbNotification.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.lbNotification.Name = "lbNotification";
+            this.lbNotification.Text = "No notification";
             // 
             // groupPanel1
             // 
@@ -370,7 +381,7 @@
             this.fpnQuestionButton.BackColor = System.Drawing.Color.Transparent;
             this.fpnQuestionButton.Location = new System.Drawing.Point(4, 4);
             this.fpnQuestionButton.Name = "fpnQuestionButton";
-            this.fpnQuestionButton.Size = new System.Drawing.Size(241, 165);
+            this.fpnQuestionButton.Size = new System.Drawing.Size(241, 148);
             this.fpnQuestionButton.TabIndex = 3;
             // 
             // llbFinnish
@@ -379,7 +390,7 @@
             this.llbFinnish.BackColor = System.Drawing.Color.Transparent;
             this.llbFinnish.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llbFinnish.LinkColor = System.Drawing.SystemColors.HotTrack;
-            this.llbFinnish.Location = new System.Drawing.Point(73, 172);
+            this.llbFinnish.Location = new System.Drawing.Point(62, 155);
             this.llbFinnish.Name = "llbFinnish";
             this.llbFinnish.Size = new System.Drawing.Size(105, 17);
             this.llbFinnish.TabIndex = 2;
@@ -536,10 +547,6 @@
             this.grViewQuestion.TabIndex = 8;
             this.grViewQuestion.Text = "Quiz View";
             // 
-            // tmCountDown
-            // 
-            this.tmCountDown.Tick += new System.EventHandler(this.tmCountDown_Tick);
-            // 
             // fpnQuestionView
             // 
             this.fpnQuestionView.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -552,16 +559,9 @@
             this.fpnQuestionView.TabIndex = 3;
             this.fpnQuestionView.WrapContents = false;
             // 
-            // lbNotification
+            // tmCountDown
             // 
-            this.lbNotification.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.lbNotification.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbNotification.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(93)))), ((int)(((byte)(198)))));
-            this.lbNotification.HotFontUnderline = true;
-            this.lbNotification.HotForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
-            this.lbNotification.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.lbNotification.Name = "lbNotification";
-            this.lbNotification.Text = "No notification";
+            this.tmCountDown.Tick += new System.EventHandler(this.tmCountDown_Tick);
             // 
             // frmQuiz
             // 
@@ -580,6 +580,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmQuiz";
             this.Text = "EPU Contest - Quiz Running";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmQuiz_FormClosed);
             this.Load += new System.EventHandler(this.frmQuiz_Load);
             this.dockSite1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
@@ -602,14 +603,14 @@
         private DevComponents.DotNetBar.Bar bar1;
         private DevComponents.DotNetBar.PanelDockContainer panelDockContainer1;
         private DevComponents.DotNetBar.ExplorerBar explorerBar1;
-        private DevComponents.DotNetBar.ExplorerBarGroupItem explorerBarGroupItem1;
+        private DevComponents.DotNetBar.ExplorerBarGroupItem ex1;
         private DevComponents.DotNetBar.LabelItem labelItem1;
         private DevComponents.DotNetBar.ButtonItem lbStudentID;
         private DevComponents.DotNetBar.LabelItem labelItem2;
         private DevComponents.DotNetBar.ButtonItem lbStudentName;
         private DevComponents.DotNetBar.LabelItem labelItem3;
         private DevComponents.DotNetBar.ButtonItem lbClassName;
-        private DevComponents.DotNetBar.ExplorerBarGroupItem exNotification;
+        private DevComponents.DotNetBar.ExplorerBarGroupItem ex2;
         private DevComponents.DotNetBar.LabelItem labelItem4;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.DockContainerItem dockContainerItem1;

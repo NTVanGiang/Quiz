@@ -17,10 +17,17 @@ namespace Quiz_Server
         private QuestionBUS qbus = new QuestionBUS();
         private SubQuestionBUS sqbus = new SubQuestionBUS();
         private AnswerBUS abus = new AnswerBUS();
-
+        private bool isReport = false;
         public frmQuestion()
         {
             InitializeComponent();
+            BindQuestionData();
+        }
+        public frmQuestion(bool _isReport)
+        {
+            InitializeComponent();
+            isReport = _isReport;
+            BindSubQuestionData();
         }
 
         private void btnImport_Click(object sender, EventArgs e)
@@ -46,7 +53,7 @@ namespace Quiz_Server
         }
         private void BindSubQuestionData(string t = "", string w = "", string o = "")
         {
-
+            if (isReport) o = " reportCount desc";
             dgrSubQuestion.DataSource = new SubQuestionBUS().SubQuestion_GetByTop(t, w, o);
             dgrSubQuestion.Columns["id"].DisplayIndex = 0;
             dgrSubQuestion.Columns["id"].HeaderText = "#";
@@ -56,6 +63,7 @@ namespace Quiz_Server
             dgrSubQuestion.Columns["content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgrSubQuestion.Columns["reportCount"].HeaderText = "Report";
             dgrSubQuestion.Columns["reportCount"].DisplayIndex = 2;
+            if (isReport) dgrSubQuestion.Columns["reportCount"].DefaultCellStyle.BackColor = Color.Gray;
             dgrSubQuestion.Columns["active"].DisplayIndex = 3;
             dgrSubQuestion.Columns["active"].HeaderText = "Active";
         }
@@ -108,7 +116,6 @@ namespace Quiz_Server
         private void frmQuestion_Load(object sender, EventArgs e)
         {
             BindCmbSubject();
-            BindQuestionData();
             //BindSubQuestionData();
             //BindAnswerData();
         }
@@ -156,6 +163,7 @@ namespace Quiz_Server
             if (row < 0) return;
             string subID = dgrSubQuestion.Rows[row].Cells["id"].Value.ToString();
             BindAnswerData(null, "", "subQuestionID = '" + subID + "'", "");
+            BindQuestionData("", "id='" + dgrSubQuestion.Rows[row].Cells["questionID"].Value.ToString() + "'", "");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -218,6 +226,11 @@ namespace Quiz_Server
         {
             BindSubQuestionData("", "content like N'%" + txtSearch.Text + "%'", "");
             BindQuestionData("", "content like N'%" + txtSearch.Text + "%'", "");
+        }
+
+        private void frmQuestion_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            new frmMain().Show();
         }
     }
 }

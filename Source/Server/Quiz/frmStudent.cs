@@ -343,5 +343,10 @@ namespace Quiz_Server
             MessageBox.Show("Generate " + count + " student account successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             BindData("", "", "");
         }
+
+        private void frmStudent_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            new frmMain().Show();
+        }
     }
 }

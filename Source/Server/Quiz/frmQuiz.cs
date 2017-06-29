@@ -120,6 +120,19 @@ namespace Quiz_Server
             quiz.SubjectID = cmbSubject.SelectedValue.ToString();
             quiz.TeacherID = cmbTeacher.SelectedValue.ToString();
             quiz.QuizName = txtQuizName.Text;
+
+            List<Question> lstSingle = qbus.Question_GetByTop("", "subjectID = '" + quiz.SubjectID + "' and content is null", "");
+            List<Question> lstMultiple = qbus.Question_GetByTop("", "subjectID = '" + quiz.SubjectID + "' and content is not null", "");
+            if (nbSingle.Value > lstSingle.Count)
+            {
+                MessageBox.Show("Number of single question bigger than data have", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (nbMultiple.Value > lstMultiple.Count)
+            {
+                MessageBox.Show("Number of multiple question bigger than data have", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if (quizObj.Quiz_Insert(quiz) > 0)
             {
                 MessageBox.Show("Insert Quiz successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -148,6 +161,18 @@ namespace Quiz_Server
             quiz.TeacherID = cmbTeacher.SelectedValue.ToString();
             quiz.QuizName = txtQuizName.Text;
             quiz.Id = txtQuizID.Text;
+            List<Question> lstSingle = qbus.Question_GetByTop("", "subjectID = '" + quiz.SubjectID + "' and content is null", "");
+            List<Question> lstMultiple = qbus.Question_GetByTop("", "subjectID = '" + quiz.SubjectID + "' and content is not null", "");
+            if (nbSingle.Value > lstSingle.Count)
+            {
+                MessageBox.Show("Number of single question bigger than data have", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (nbMultiple.Value > lstMultiple.Count)
+            {
+                MessageBox.Show("Number of multiple question bigger than data have", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if (quizObj.Quiz_Update(quiz))
             {
                 MessageBox.Show("Update Quiz successed!", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -490,6 +515,11 @@ namespace Quiz_Server
                     dgrExam.Rows[e.RowIndex].Selected = true;
                 }
             }
+        }
+
+        private void frmQuiz_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            new frmMain().Show();
         }
     }
 }

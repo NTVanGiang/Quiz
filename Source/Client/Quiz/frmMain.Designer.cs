@@ -407,6 +407,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "EPU Contest - Before Contest";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);

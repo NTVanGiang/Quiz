@@ -13,12 +13,14 @@ namespace Quiz.Entity
         public string ResultID { get; set; }
         public string SubQuestionID { get; set; }
         public string StudentAnswerID { get; set; }
+        public string IsCorrect { get; set; }
         public void ResultDetailIDataReader(SqlDataReader dr)
         {
             Id = dr["id"] is DBNull ? string.Empty : dr["id"].ToString();
             ResultID = dr["resultID"] is DBNull ? string.Empty : dr["resultID"].ToString();
             SubQuestionID = dr["subQuestionID"] is DBNull ? string.Empty : dr["subQuestionID"].ToString();
             StudentAnswerID = dr["studentAnswerID"] is DBNull ? string.Empty : dr["studentAnswerID"].ToString();
+            IsCorrect = dr["isCorrect"] is DBNull ? string.Empty : dr["isCorrect"].ToString();
         }
     }
 }

@@ -36,5 +36,10 @@ namespace Quiz
                 txtPassword.Text = "";
             }
         }
+
+        private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

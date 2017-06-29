@@ -29,17 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuiz));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuiz));
             this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupPanel5 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnBack = new DevComponents.DotNetBar.ButtonX();
+            this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
+            this.btnEdit = new DevComponents.DotNetBar.ButtonX();
+            this.btnClear = new DevComponents.DotNetBar.ButtonX();
+            this.btnDeleteMore = new DevComponents.DotNetBar.ButtonX();
+            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.cmbSubject = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.txtQuizName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtQuizID = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -56,24 +63,17 @@
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.createRandomExamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.dgrQuiz = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel6 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dgrExam = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnBack = new DevComponents.DotNetBar.ButtonX();
-            this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
-            this.btnEdit = new DevComponents.DotNetBar.ButtonX();
-            this.btnClear = new DevComponents.DotNetBar.ButtonX();
-            this.btnDeleteMore = new DevComponents.DotNetBar.ButtonX();
-            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.menuViewExam = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDeleteExam = new System.Windows.Forms.ToolStripMenuItem();
-            this.createRandomExamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.groupPanel5.SuspendLayout();
             this.groupPanel4.SuspendLayout();
             this.groupPanel2.SuspendLayout();
@@ -147,6 +147,90 @@
             this.groupPanel5.TabIndex = 0;
             this.groupPanel5.Text = "Quiz Function";
             // 
+            // btnBack
+            // 
+            this.btnBack.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnBack.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
+            this.btnBack.ImageFixedSize = new System.Drawing.Size(24, 24);
+            this.btnBack.Location = new System.Drawing.Point(190, 97);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(128, 36);
+            this.btnBack.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnBack.TabIndex = 0;
+            this.btnBack.Text = "Back home";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnRefresh.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageFixedSize = new System.Drawing.Size(24, 24);
+            this.btnRefresh.Location = new System.Drawing.Point(190, 51);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(128, 36);
+            this.btnRefresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnRefresh.TabIndex = 0;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageFixedSize = new System.Drawing.Size(24, 24);
+            this.btnEdit.Location = new System.Drawing.Point(190, 3);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(128, 36);
+            this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnEdit.TabIndex = 0;
+            this.btnEdit.Text = "Update";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClear.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
+            this.btnClear.ImageFixedSize = new System.Drawing.Size(24, 24);
+            this.btnClear.Location = new System.Drawing.Point(20, 98);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(122, 36);
+            this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClear.TabIndex = 0;
+            this.btnClear.Text = "Clear All";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnDeleteMore
+            // 
+            this.btnDeleteMore.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDeleteMore.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDeleteMore.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteMore.Image")));
+            this.btnDeleteMore.ImageFixedSize = new System.Drawing.Size(24, 24);
+            this.btnDeleteMore.Location = new System.Drawing.Point(20, 51);
+            this.btnDeleteMore.Name = "btnDeleteMore";
+            this.btnDeleteMore.Size = new System.Drawing.Size(122, 36);
+            this.btnDeleteMore.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDeleteMore.TabIndex = 0;
+            this.btnDeleteMore.Text = "Delete selected";
+            this.btnDeleteMore.Click += new System.EventHandler(this.btnDeleteMore_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.ImageFixedSize = new System.Drawing.Size(24, 24);
+            this.btnAdd.Location = new System.Drawing.Point(20, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(122, 36);
+            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // labelX1
             // 
             this.labelX1.AutoSize = true;
@@ -200,6 +284,20 @@
             this.groupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel4.TabIndex = 0;
             this.groupPanel4.Text = "Quiz search box";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnSearch.Location = new System.Drawing.Point(115, 45);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(116, 40);
+            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "Find";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cmbSubject
             // 
@@ -439,6 +537,30 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(185, 70);
             // 
+            // createRandomExamToolStripMenuItem
+            // 
+            this.createRandomExamToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("createRandomExamToolStripMenuItem.Image")));
+            this.createRandomExamToolStripMenuItem.Name = "createRandomExamToolStripMenuItem";
+            this.createRandomExamToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.createRandomExamToolStripMenuItem.Text = "Create random Exam";
+            this.createRandomExamToolStripMenuItem.Click += new System.EventHandler(this.createRandomExamToolStripMenuItem_Click);
+            // 
+            // menuEdit
+            // 
+            this.menuEdit.Image = ((System.Drawing.Image)(resources.GetObject("menuEdit.Image")));
+            this.menuEdit.Name = "menuEdit";
+            this.menuEdit.Size = new System.Drawing.Size(184, 22);
+            this.menuEdit.Text = "Edit this item";
+            this.menuEdit.Click += new System.EventHandler(this.menuEdit_Click);
+            // 
+            // menuDelete
+            // 
+            this.menuDelete.Image = ((System.Drawing.Image)(resources.GetObject("menuDelete.Image")));
+            this.menuDelete.Name = "menuDelete";
+            this.menuDelete.Size = new System.Drawing.Size(184, 22);
+            this.menuDelete.Text = "Delete this item";
+            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
+            // 
             // dgrQuiz
             // 
             this.dgrQuiz.AllowUserToAddRows = false;
@@ -458,7 +580,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(21)))), ((int)(((byte)(110)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgrQuiz.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgrQuiz.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -619,7 +741,7 @@
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(21)))), ((int)(((byte)(110)))));
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgrExam.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgrExam.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -651,104 +773,6 @@
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(139, 48);
             // 
-            // btnBack
-            // 
-            this.btnBack.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnBack.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
-            this.btnBack.ImageFixedSize = new System.Drawing.Size(24, 24);
-            this.btnBack.Location = new System.Drawing.Point(190, 97);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(128, 36);
-            this.btnBack.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnBack.TabIndex = 0;
-            this.btnBack.Text = "Back home";
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnRefresh.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.ImageFixedSize = new System.Drawing.Size(24, 24);
-            this.btnRefresh.Location = new System.Drawing.Point(190, 51);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(128, 36);
-            this.btnRefresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnRefresh.TabIndex = 0;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.ImageFixedSize = new System.Drawing.Size(24, 24);
-            this.btnEdit.Location = new System.Drawing.Point(190, 3);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(128, 36);
-            this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnEdit.TabIndex = 0;
-            this.btnEdit.Text = "Update";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnClear.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.ImageFixedSize = new System.Drawing.Size(24, 24);
-            this.btnClear.Location = new System.Drawing.Point(20, 98);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(122, 36);
-            this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnClear.TabIndex = 0;
-            this.btnClear.Text = "Clear All";
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnDeleteMore
-            // 
-            this.btnDeleteMore.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDeleteMore.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDeleteMore.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteMore.Image")));
-            this.btnDeleteMore.ImageFixedSize = new System.Drawing.Size(24, 24);
-            this.btnDeleteMore.Location = new System.Drawing.Point(20, 51);
-            this.btnDeleteMore.Name = "btnDeleteMore";
-            this.btnDeleteMore.Size = new System.Drawing.Size(122, 36);
-            this.btnDeleteMore.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDeleteMore.TabIndex = 0;
-            this.btnDeleteMore.Text = "Delete selected";
-            this.btnDeleteMore.Click += new System.EventHandler(this.btnDeleteMore_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.ImageFixedSize = new System.Drawing.Size(24, 24);
-            this.btnAdd.Location = new System.Drawing.Point(20, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(122, 36);
-            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnSearch.Location = new System.Drawing.Point(115, 45);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(116, 40);
-            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Find";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
             // menuViewExam
             // 
             this.menuViewExam.Image = ((System.Drawing.Image)(resources.GetObject("menuViewExam.Image")));
@@ -765,30 +789,6 @@
             this.menuDeleteExam.Text = "Delete Exam";
             this.menuDeleteExam.Click += new System.EventHandler(this.menuDeleteExam_Click);
             // 
-            // createRandomExamToolStripMenuItem
-            // 
-            this.createRandomExamToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("createRandomExamToolStripMenuItem.Image")));
-            this.createRandomExamToolStripMenuItem.Name = "createRandomExamToolStripMenuItem";
-            this.createRandomExamToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.createRandomExamToolStripMenuItem.Text = "Create random Exam";
-            this.createRandomExamToolStripMenuItem.Click += new System.EventHandler(this.createRandomExamToolStripMenuItem_Click);
-            // 
-            // menuEdit
-            // 
-            this.menuEdit.Image = ((System.Drawing.Image)(resources.GetObject("menuEdit.Image")));
-            this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(184, 22);
-            this.menuEdit.Text = "Edit this item";
-            this.menuEdit.Click += new System.EventHandler(this.menuEdit_Click);
-            // 
-            // menuDelete
-            // 
-            this.menuDelete.Image = ((System.Drawing.Image)(resources.GetObject("menuDelete.Image")));
-            this.menuDelete.Name = "menuDelete";
-            this.menuDelete.Size = new System.Drawing.Size(184, 22);
-            this.menuDelete.Text = "Delete this item";
-            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
-            // 
             // frmQuiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -801,6 +801,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmQuiz";
             this.Text = "EPU Contest System - Quiz Manager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmQuiz_FormClosed);
             this.LocationChanged += new System.EventHandler(this.frmQuiz_Load);
             this.groupPanel5.ResumeLayout(false);
             this.groupPanel4.ResumeLayout(false);

@@ -44,7 +44,7 @@ namespace Quiz_Server
                 cmbSubject.Enabled = false;
                 txtView.Text = GetContentQuestion();
                 btnUpdate.Text = "Update";
-                btnUpdate.Image = System.Drawing.Image.FromFile("Resources/edit.png");
+                btnUpdate.Image = System.Drawing.Image.FromFile("D:\\EPU\\c#\\Quiz\\Source\\Server\\Quiz\\Resources\\edit.png");
             }
         }
 
@@ -368,6 +368,10 @@ namespace Quiz_Server
             {
                 txtView.SelectAll();
             }
+        }
+
+        private void frmQuestionDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
         }
     }
 }

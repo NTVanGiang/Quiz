@@ -67,6 +67,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(232, 22);
             this.txtUsername.TabIndex = 0;
+            this.txtUsername.Text = "giang";
             // 
             // txtPassword
             // 
@@ -77,6 +78,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(232, 22);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.Text = "giang";
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label2
@@ -222,6 +224,7 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EPU Contest System - Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
             this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

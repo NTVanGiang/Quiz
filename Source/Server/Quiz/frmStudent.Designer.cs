@@ -721,6 +721,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmStudent";
             this.Text = "EPU Contest System - Student Manager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmStudent_FormClosed);
             this.Load += new System.EventHandler(this.frmStudent_Load);
             this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgrStudent)).EndInit();

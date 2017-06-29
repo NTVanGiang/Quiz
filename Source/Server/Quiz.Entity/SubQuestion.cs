@@ -66,7 +66,7 @@ namespace Quiz.Entity
             Id = dr["id"] is DBNull ? string.Empty : dr["id"].ToString();
             QuestionId = dr["questionID"] is DBNull ? string.Empty : dr["questionID"].ToString();
             Content = dr["content"] is DBNull ? "" : dr["content"].ToString();
-            ReportCount = dr["reportCount"] is DBNull ? string.Empty : dr["reportCount"].ToString();
+            ReportCount = dr["reportCount"] is DBNull ? "0" : dr["reportCount"].ToString();
             Active = dr["active"] is DBNull ? "" : dr["active"].ToString();
             //QuestionName= dr["questionName"] is DBNull ? "" : dr["questionName"].ToString();
         }

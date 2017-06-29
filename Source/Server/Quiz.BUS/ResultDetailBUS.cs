@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Quiz.BUS
 {
-    public class ResultDetailDetailBUS
+    public class ResultDetailBUS
     {
         private ResultDetailDAL obj = new ResultDetailDAL();
         public List<ResultDetail> ResultDetail_GetByTop(string Top, string Where, string Order)

@@ -68,5 +68,10 @@ namespace Quiz_Server
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -47,6 +47,7 @@ namespace Quiz.DAL
                     dbCmd.Parameters.Add(new SqlParameter("@resultID", data.ResultID));
                     dbCmd.Parameters.Add(new SqlParameter("@subquestionID", data.SubQuestionID));
                     dbCmd.Parameters.Add(new SqlParameter("@studentAnswerID", data.StudentAnswerID));
+                    dbCmd.Parameters.Add(new SqlParameter("@isCorrect", data.IsCorrect));
                     dbCmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
                     dbCmd.ExecuteNonQuery();
                     id = int.Parse(dbCmd.Parameters["@id"].Value.ToString());
